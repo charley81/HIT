@@ -1,7 +1,9 @@
+import { Intro } from './pages'
+
 function App() {
   return (
     <div className="App">
-      <h1>Start Here</h1>
+      <Intro />
     </div>
   )
 }

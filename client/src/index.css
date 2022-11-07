@@ -11,11 +11,11 @@
   --colorLight: #fffdfa;
   --colorDark: #3d3c3b;
   --greyLight: #e5e3dc;
-  --colorSuccess: #90ff21;
-  --colorDanger: #ff5621;
+  --colorSuccess: #558564;
+  --colorDanger: #ad2831;
   --colorGreyDark: #52514f;
   --colorGreyMid: #cccac4;
-  --colorPrimaryHover: #cc931d;
+  --colorPrimaryHover: #edaa1f;
 }
 
 * {
@@ -28,6 +28,8 @@ body {
   font-family: var(--fontFamily);
   font-size: 18px;
   line-height: 1.5;
+  background-color: var(--colorLight);
+  color: var(--colorDark);
 }
 
 a {
@@ -36,4 +38,13 @@ a {
 
 li {
   list-style: none;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+
+img {
+  width: 100%;
 }
