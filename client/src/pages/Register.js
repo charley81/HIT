@@ -1,7 +1,84 @@
+import { useState } from 'react'
+import { Header, FormGroup, Alert } from '../components'
+import styled from 'styled-components'
+
+const initialState = {
+  name: '',
+  email: '',
+  password: '',
+  isRegistered: true,
+  showAlert: false
+}
+
 export default function Register() {
+  const [values, setValues] = useState(initialState)
+  // global state and useNavigate
+
+  function handleChange(e) {
+    console.log(e.target)
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    console.log(e.target)
+  }
+
   return (
-    <div>
-      <h1>Register</h1>
-    </div>
+    <Section>
+      <Header text="Register" />
+      {values.showAlert && <Alert />}
+      <form onSubmit={handleSubmit}>
+        {/* name */}
+        <FormGroup
+          type="text"
+          name="name"
+          value={values.name}
+          onChange={handleChange}
+          text="name"
+          placeholder="enter name"
+        />
+        {/* email */}
+        <FormGroup
+          type="email"
+          name="email"
+          value={values.email}
+          onChange={handleChange}
+          text="email"
+          placeholder="enter email"
+        />
+        {/* password */}
+        <FormGroup
+          type="password"
+          name="password"
+          value={values.password}
+          onChange={handleChange}
+          text="password"
+          placeholder="enter password"
+        />
+
+        {/* submit btn */}
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </Section>
   )
 }
+
+const Section = styled.section`
+  padding: 1rem;
+  max-width: var(--maxWidthTablet);
+  margin: auto;
+
+  form {
+    margin: 2rem 0;
+  }
+
+  button {
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: var(--formMaxDesktop);
+  }
+`

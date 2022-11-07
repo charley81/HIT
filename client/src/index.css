@@ -50,10 +50,9 @@ img {
 }
 
 /* utilities */
-.btn-primary {
+.btn {
   display: block;
   text-align: center;
-  background: var(--colorPrimary);
   width: 100%;
   padding: 0.75rem;
   border-radius: var(--borderRadius);
@@ -61,9 +60,24 @@ img {
   transition: var(--transition);
   font-size: 1.1rem;
   font-family: var(--fontFamily);
+}
+
+.btn-primary {
+  background: var(--colorPrimary);
   color: var(--colorDark);
 }
 
 .btn-primary:hover {
   background-color: var(--colorPrimaryHover);
+}
+
+.alert {
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: var(--borderRadius);
+}
+
+.alert-danger {
+  background-color: var(--colorDanger);
+  color: var(--colorLight);
 }
