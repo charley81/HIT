@@ -15,7 +15,7 @@ export default function Intro() {
             Too drunk to remember (TDTR) is a platform for you to keep track,
             log details and rank beverages you’ve had… So next time you know
           </p>
-          <Button text={'Login/Register'} />
+          <Button text={'Login/Register'} path="register" />
         </div>
 
         {/* image */}
