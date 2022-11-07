@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import beerImage from '../assets/beer.png'
-import { Header, Button } from '../components'
+import { Header } from '../components'
+import { Link } from 'react-router-dom'
 
 export default function Intro() {
   return (
@@ -15,7 +16,9 @@ export default function Intro() {
             Too drunk to remember (TDTR) is a platform for you to keep track,
             log details and rank beverages you’ve had… So next time you know
           </p>
-          <Button text={'Login/Register'} path="register" />
+          <Link to="/register" className="btn btn-primary">
+            Login/Register
+          </Link>
         </div>
 
         {/* image */}

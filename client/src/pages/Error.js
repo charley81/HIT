@@ -1,13 +1,16 @@
 import styled from 'styled-components'
 import image from '../assets/notFound.svg'
-import { Button, Header } from '../components'
+import { Header } from '../components'
+import { Link } from 'react-router-dom'
 
 export default function Error() {
   return (
-    <Section>
+    <Section className="form-width">
       <Header text="404" />
       <img src={image} alt="beer" />
-      <Button text="Back Home" className="error-btn" />
+      <Link to="/" className="btn btn-primary">
+        Back Home
+      </Link>
     </Section>
   )
 }
