@@ -17,7 +17,7 @@ export function AppProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   function displayAlert() {
-    dispatch({ type: DISPLAY_ALERT })
+    dispatch({ type: 'display_alert' })
   }
 
   return (

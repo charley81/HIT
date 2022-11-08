@@ -1,5 +1,15 @@
-import { useReducer } from 'react'
-
 export default function reducer(state, action) {
-  throw new Error(`no such action: ${action.type}`)
+  switch (action.type) {
+    case 'display_alert': {
+      return {
+        ...state,
+        showAlert: true,
+        alertType: 'danger',
+        alertText: 'Please provide all values'
+      }
+    }
+    default: {
+      throw new Error(`no such action: ${action.type}`)
+    }
+  }
 }

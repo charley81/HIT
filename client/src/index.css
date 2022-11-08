@@ -81,3 +81,8 @@ img {
   background-color: var(--colorDanger);
   color: var(--colorLight);
 }
+
+.alert-success {
+  background-color: var(--colorSuccess);
+  color: var(--colorLight);
+}
