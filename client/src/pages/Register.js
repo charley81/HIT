@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Header, FormGroup, Alert } from '../components'
 import styled from 'styled-components'
+import { useAppContext } from '../context/appContext'
 
 const initialState = {
   name: '',
@@ -12,6 +13,8 @@ const initialState = {
 
 export default function Register() {
   const [values, setValues] = useState(initialState)
+  const { isLoading, showAlert } = useAppContext()
+
   // global state and useNavigate
 
   function toggleRegistered() {
@@ -33,7 +36,7 @@ export default function Register() {
   return (
     <Section>
       <Header text={values.isRegistered ? 'Login' : 'Register'} />
-      {values.showAlert && <Alert />}
+      {showAlert && <Alert />}
       <form onSubmit={handleSubmit}>
         {/* name */}
         {!values.isRegistered && (

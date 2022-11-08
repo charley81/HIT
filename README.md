@@ -39,6 +39,8 @@
 ## Uses:
 
 - React
+- React Hooks (useState, useEffect, useReducer, useContext)
+- Custom Hooks
 - Node
 - Express
 - Mongoose
