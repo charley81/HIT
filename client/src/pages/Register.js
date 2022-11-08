@@ -7,13 +7,12 @@ const initialState = {
   name: '',
   email: '',
   password: '',
-  isRegistered: true,
-  showAlert: false
+  isRegistered: true
 }
 
 export default function Register() {
   const [values, setValues] = useState(initialState)
-  const { isLoading, showAlert } = useAppContext()
+  const { showAlert, isLoading } = useAppContext()
 
   // global state and useNavigate
 

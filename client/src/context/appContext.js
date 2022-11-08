@@ -1,4 +1,6 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useReducer } from 'react'
+import { DISPLAY_ALERT } from './actions'
+import reducer from './reducer'
 
 export const initialState = {
   isLoading: false,
@@ -11,11 +13,17 @@ export const initialState = {
 const AppContext = createContext()
 
 // get children so that you can wrap them with this provider
-function AppProvider({ children }) {
-  const [state, setState] = useState(initialState)
+export function AppProvider({ children }) {
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  function displayAlert() {
+    dispatch({ type: DISPLAY_ALERT })
+  }
 
   return (
-    <AppContext.Provider value={{ ...state }}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ ...state, displayAlert }}>
+      {children}
+    </AppContext.Provider>
   )
 }
 
@@ -23,5 +31,3 @@ function AppProvider({ children }) {
 export function useAppContext() {
   return useContext(AppContext)
 }
-
-export { AppProvider }
