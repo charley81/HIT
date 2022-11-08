@@ -14,6 +14,13 @@ export default function Register() {
   const [values, setValues] = useState(initialState)
   // global state and useNavigate
 
+  function toggleRegistered() {
+    setValues({
+      ...values,
+      isRegistered: !values.isRegistered
+    })
+  }
+
   function handleChange(e) {
     console.log(e.target)
   }
@@ -25,18 +32,21 @@ export default function Register() {
 
   return (
     <Section>
-      <Header text="Register" />
+      <Header text={values.isRegistered ? 'Login' : 'Register'} />
       {values.showAlert && <Alert />}
       <form onSubmit={handleSubmit}>
         {/* name */}
-        <FormGroup
-          type="text"
-          name="name"
-          value={values.name}
-          onChange={handleChange}
-          text="name"
-          placeholder="enter name"
-        />
+        {!values.isRegistered && (
+          <FormGroup
+            type="text"
+            name="name"
+            value={values.name}
+            onChange={handleChange}
+            text="name"
+            placeholder="enter name"
+          />
+        )}
+
         {/* email */}
         <FormGroup
           type="email"
@@ -60,6 +70,14 @@ export default function Register() {
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
+
+        {/* switch between register and login */}
+        <p>
+          {values.isRegistered ? 'Not yet registered?' : 'Already registered?'}
+          <button type="button" onClick={toggleRegistered}>
+            {values.isRegistered ? 'Register' : 'Login'}
+          </button>
+        </p>
       </form>
     </Section>
   )
@@ -76,6 +94,16 @@ const Section = styled.section`
 
   button {
     margin-top: 2rem;
+  }
+
+  p {
+    button {
+      margin-left: 0.5rem;
+      background: none;
+      border: none;
+      text-decoration: underline;
+      cursor: pointer;
+    }
   }
 
   @media (min-width: 1024px) {
