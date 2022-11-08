@@ -8,6 +8,14 @@ export default function reducer(state, action) {
         alertText: 'Please provide all values'
       }
     }
+    case 'clear_alert': {
+      return {
+        ...state,
+        showAlert: false,
+        alertType: '',
+        alertText: ''
+      }
+    }
     default: {
       throw new Error(`no such action: ${action.type}`)
     }

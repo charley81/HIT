@@ -18,6 +18,13 @@ export function AppProvider({ children }) {
 
   function displayAlert() {
     dispatch({ type: 'display_alert' })
+    clearAlert()
+  }
+
+  function clearAlert() {
+    setTimeout(() => {
+      dispatch({ type: 'clear_alert' })
+    }, 2000)
   }
 
   return (
