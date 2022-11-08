@@ -41,6 +41,8 @@
 - React
 - Node
 - Express
+- Mongoose
 - MongoDB
 - Styled Components
 - React RouterV6
+- recharts
