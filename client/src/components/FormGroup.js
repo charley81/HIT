@@ -41,5 +41,9 @@ const Group = styled.div`
       font-size: 1.1rem;
       text-transform: capitalize;
     }
+
+    &:focus {
+      outline: none;
+    }
   }
 `

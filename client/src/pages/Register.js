@@ -12,24 +12,27 @@ const initialState = {
 
 export default function Register() {
   const [values, setValues] = useState(initialState)
-  const { showAlert, isLoading } = useAppContext()
+  const { showAlert, isLoading, displayAlert } = useAppContext()
 
   // global state and useNavigate
 
   function toggleRegistered() {
-    setValues({
-      ...values,
-      isRegistered: !values.isRegistered
-    })
+    setValues({ ...values, isRegistered: !values.isRegistered })
   }
 
   function handleChange(e) {
-    console.log(e.target)
+    setValues({ ...values, [e.target.name]: e.target.value })
   }
 
   function handleSubmit(e) {
     e.preventDefault()
-    console.log(e.target)
+    const { name, email, password, isRegistered } = values
+
+    if ((!isRegistered && !name) || !email || !password) {
+      displayAlert()
+      return
+    }
+    console.log(values)
   }
 
   return (
