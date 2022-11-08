@@ -1,0 +1,21 @@
+{
+  "name": "tdtr",
+  "version": "1.0.0",
+  "description": "Keep track of the different beers/wines/etc. that you drink write info about them, your thoughts, and rank them",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charley81/TDTR.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charley81/TDTR/issues"
+  },
+  "homepage": "https://github.com/charley81/TDTR#readme"
+}
