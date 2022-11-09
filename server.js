@@ -1,10 +1,12 @@
 import express from 'express'
 const app = express()
+import connectDB from './db/connect.js'
 import notFoundMiddleware from './middleware/notFound.js'
 import errorHandlerMiddleware from './middleware/errorHandler.js'
+import dotenv from 'dotenv'
+dotenv.config()
 
 app.get('/', (req, res) => {
-  throw new Error('error')
   res.send('Server')
 })
 
@@ -16,4 +18,14 @@ app.use(errorHandlerMiddleware)
 
 const port = process.env.PORT || 8000
 
-app.listen(port, () => console.log(`Serve listening on port: ${port}`))
+// only spin up server if database connection was successful
+// has to be async because connectDB/mongoose connect returns a promise
+async function start() {
+  try {
+    await connectDB(process.env.MONGO_URL)
+    app.listen(port, () => console.log(`Serve listening on port: ${port}`))
+  } catch (err) {
+    console.log(err)
+  }
+}
+start()
