@@ -1,11 +1,20 @@
-export function registerUser(req, res) {
+// @desc register a user
+// @route POST /api/v1/auth/register
+// @access public
+export async function registerUser(req, res) {
   res.send('register user')
 }
 
-export function loginUser(req, res) {
+// @desc login a user
+// @route POST /api/v1/auth/login
+// @access public
+export async function loginUser(req, res) {
   res.send('login user')
 }
 
-export function updateUser(req, res) {
+// @desc update a user
+// @route POST /api/v1/auth/updateUser
+// @access private
+export async function updateUser(req, res) {
   res.send('update user')
 }
