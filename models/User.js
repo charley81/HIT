@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 const { Schema } = mongoose
+import validator from 'validator'
 
 const userSchema = new Schema({
   firstName: {
@@ -18,7 +19,12 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: [true, 'please provide an email'],
-    unique: true
+    unique: true,
+    validate: {
+      // using a npm package to validate email because it's better tested and gives you more options
+      validator: validator.isEmail,
+      message: 'please provide a valid email'
+    }
   },
   password: {
     type: String,
@@ -31,6 +37,7 @@ const userSchema = new Schema({
     trim: true,
     default: 'your city'
   }
+  // https://mongoosejs.com/docs/validation.html#custom-validators
 })
 
 export default mongoose.model('User', userSchema)
