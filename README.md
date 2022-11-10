@@ -56,4 +56,4 @@
 - [validator](https://www.npmjs.com/package/validator)
   > This package validates strings. I used it to validate emails because it's better tested and gives you more options than out of the box mongoose validation. You can use this package to validate just about anything
 - [http status codes](https://www.npmjs.com/package/http-status-codes)
-  > This package provides constants for status codes. It provides consistency, less bugs, and is easier to read/manage
+  > This package provides constants for status codes. It provides consistency, less bugs, and is easier to read/manage. It also gives you a description of the status code when hovering over it. As well it gives you suggestions with descriptions when choosing a status code
