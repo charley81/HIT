@@ -1,31 +1,7 @@
 import User from '../models/User.js'
 import 'express-async-errors'
 import { StatusCodes } from 'http-status-codes'
-
-// this class extends from the JS Error method
-class CustomAPIError extends Error {
-  // pass in the message and send to errorHandlerMiddleware
-  constructor(message) {
-    super(message)
-  }
-}
-
-// these classes extend the CustomAPIError so that we can pass different status codes to our errorHandlerMiddleware
-class BadRequestError extends CustomAPIError {
-  constructor(message) {
-    super(message)
-    // this gets passed to errorHandlerMiddleware to change the status code from 500 to 400
-    this.statusCode = StatusCodes.BAD_REQUEST
-  }
-}
-
-class NotFoundError extends CustomAPIError {
-  constructor(message) {
-    super(message)
-    // this gets passed to errorHandlerMiddleware to change the status code from 500 to 400
-    this.statusCode = StatusCodes.NOT_FOUND
-  }
-}
+import { BadRequestError } from '../errors/index.js'
 
 // @desc register a user
 // @route POST /api/v1/auth/register
