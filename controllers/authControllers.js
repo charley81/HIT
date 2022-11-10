@@ -13,6 +13,11 @@ export async function registerUser(req, res) {
     throw new BadRequestError('please provide all values')
   }
 
+  const userExist = await User.findOne({ email })
+  if (userExist) {
+    throw new BadRequestError('Email already in use')
+  }
+
   const user = await User.create({ firstName, email, password })
   res.status(StatusCodes.CREATED).json({ user })
 }
