@@ -4,5 +4,5 @@
 // writing these four parameters, express knows it's going to be an error handler
 export default function errorHandlerMiddleware(err, req, res, next) {
   console.log(err)
-  res.status(500).json({ msg: 'There was an error' })
+  res.status(500).json({ msg: err })
 }

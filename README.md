@@ -48,3 +48,12 @@
 - Styled Components
 - React RouterV6
 - recharts
+
+## Extras
+
+- [express-async-errors](https://www.npmjs.com/package/express-async-errors)
+  > No need for try/catch in async controller functions, nor need to call next and pass in error for error to be sent to error handler middleware... All this is handled behind the scenes with the express-async-errors package
+- [validator](https://www.npmjs.com/package/validator)
+  > This package validates strings. I used it to validate emails because it's better tested and gives you more options than out of the box mongoose validation. You can use this package to validate just about anything
+- [http status codes](https://www.npmjs.com/package/http-status-codes)
+  > This package provides constants for status codes. It provides consistency, less bugs, and is easier to read/manage

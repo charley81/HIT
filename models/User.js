@@ -10,7 +10,7 @@ const userSchema = new Schema({
     maxLength: 20,
     trim: true
   },
-  firstName: {
+  lastName: {
     type: String,
     maxLength: 20,
     trim: true,
@@ -21,7 +21,6 @@ const userSchema = new Schema({
     required: [true, 'please provide an email'],
     unique: true,
     validate: {
-      // using a npm package to validate email because it's better tested and gives you more options
       validator: validator.isEmail,
       message: 'please provide a valid email'
     }

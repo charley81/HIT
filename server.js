@@ -18,7 +18,7 @@ app.use('/api/v1/drinks', drinksRouter)
 // Middleware
 // looks for request that do not match any of your routes
 app.use(notFoundMiddleware)
-// looks for errors happening in our existing route
+// looks for errors happening in our existing route and sends to this error handling function
 app.use(errorHandlerMiddleware)
 
 const port = process.env.PORT || 8000
