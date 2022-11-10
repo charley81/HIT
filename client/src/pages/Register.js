@@ -28,7 +28,7 @@ export default function Register() {
     e.preventDefault()
     const { name, email, password, isRegistered } = values
 
-    if ((!isRegistered && !name) || !email || !password) {
+    if (!email || !password || (!isRegistered && !name)) {
       displayAlert()
       return
     }

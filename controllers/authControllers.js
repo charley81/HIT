@@ -6,7 +6,13 @@ import { StatusCodes } from 'http-status-codes'
 // @route POST /api/v1/auth/register
 // @access public
 export async function registerUser(req, res) {
-  const user = await User.create(req.body)
+  const { email, firstName, password } = req.body
+
+  if (!firstName || !email || !password) {
+    throw new Error('please provide all values')
+  }
+
+  const user = await User.create({ firstName, email, password })
   res.status(StatusCodes.CREATED).json({ user })
 }
 

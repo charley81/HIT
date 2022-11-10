@@ -5,11 +5,12 @@
 import { StatusCodes } from 'http-status-codes'
 
 export default function errorHandlerMiddleware(err, req, res, next) {
-  // console.log(err)
+  console.log(err.message)
 
   const defaultError = {
     statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
-    msg: 'something went wrong'
+    // check to see if threw a error from front end, if so there will be message property, so use that if not use the generic message
+    msg: err.message || 'something went wrong'
   }
   if (err.name === 'ValidationError') {
     // default is status code 500 (internal server error) but we want 400 (bad request)
@@ -24,6 +25,7 @@ export default function errorHandlerMiddleware(err, req, res, next) {
 
   if (err.code && err.code === 11000) {
     defaultError.statusCode = StatusCodes.BAD_REQUEST
+    // use Object.keys() to get the keyValue which will show you the field causing the error when getting err.code 11000
     defaultError.msg = `${Object.keys(err.keyValue)} field has to be unique`
   }
   // res.status(defaultError.statusCode).json({ msg: err })
