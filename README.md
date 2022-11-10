@@ -36,6 +36,8 @@
 
 ## [User Flow](https://www.figma.com/file/paclPNy2tqpoKXQ3CcjTsh/User-Flow?node-id=0%3A1)
 
+## [Designs](https://www.figma.com/file/JrtbLcHt61qyx76Ztqwcxx/Designs?node-id=4%3A11)
+
 ## Uses:
 
 - React
