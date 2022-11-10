@@ -1,8 +1,15 @@
+import User from '../models/User.js'
+
 // @desc register a user
 // @route POST /api/v1/auth/register
 // @access public
 export async function registerUser(req, res) {
-  res.send('register user')
+  try {
+    const user = await User.create(req.body)
+    res.status(201).json({ user })
+  } catch (error) {
+    res.status(500).json({ msg: 'there was an error' })
+  }
 }
 
 // @desc login a user
