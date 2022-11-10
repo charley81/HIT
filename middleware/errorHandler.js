@@ -5,7 +5,7 @@
 import { StatusCodes } from 'http-status-codes'
 
 export default function errorHandlerMiddleware(err, req, res, next) {
-  console.log(err.message)
+  console.log(err)
 
   const defaultError = {
     // Check to see if a status code is coming in from custom error class on register authController
@@ -29,6 +29,6 @@ export default function errorHandlerMiddleware(err, req, res, next) {
     // use Object.keys() to get the keyValue which will show you the field causing the error when getting err.code 11000
     defaultError.msg = `${Object.keys(err.keyValue)} field has to be unique`
   }
-  // res.status(defaultError.statusCode).json({ msg: err })
+
   res.status(defaultError.statusCode).json({ msg: defaultError.msg })
 }
