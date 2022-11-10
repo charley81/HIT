@@ -8,7 +8,8 @@ export default function errorHandlerMiddleware(err, req, res, next) {
   console.log(err.message)
 
   const defaultError = {
-    statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+    // Check to see if a status code is coming in from custom error class on register authController
+    statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
     // check to see if threw a error from front end, if so there will be message property, so use that if not use the generic message
     msg: err.message || 'something went wrong'
   }
