@@ -11,6 +11,13 @@ dotenv.config()
 // Parse incoming request bodies in a middleware before your handlers, available under the req.body property
 app.use(express.json())
 
+// app.get('/', (req, res) => {
+//   res.send('Welcome')
+// })
+app.get('/api/v1', (req, res) => {
+  res.json({ msg: 'API' })
+})
+
 // routes setup
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/drinks', drinksRouter)

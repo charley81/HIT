@@ -1,5 +1,4 @@
 import { createContext, useContext, useReducer } from 'react'
-import { DISPLAY_ALERT } from './actions'
 import reducer from './reducer'
 
 export const initialState = {
