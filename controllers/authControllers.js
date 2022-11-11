@@ -30,7 +30,8 @@ export async function registerUser(req, res) {
       lastName: user.lastName,
       location: user.location
     },
-    token
+    token,
+    location: user.location
   })
 }
 

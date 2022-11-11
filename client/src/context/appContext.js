@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer } from 'react'
 import reducer from './reducer'
+import axios from 'axios'
 
 export const initialState = {
   isLoading: false,
@@ -8,7 +9,8 @@ export const initialState = {
   alertType: '',
   user: null,
   token: null,
-  userLocation: ''
+  userLocation: '',
+  drinkLocation: ''
 }
 
 // setup context => returns a provider and a consumer
@@ -30,7 +32,28 @@ export function AppProvider({ children }) {
   }
 
   async function registerUser(currentUser) {
-    console.log(currentUser)
+    dispatch({ type: 'register_user_begin' })
+    try {
+      const response = await axios.post('/api/v1/auth/register', currentUser)
+      console.log(response)
+      const { user, token, location } = response.data
+      dispatch({
+        type: 'register_user_success',
+        payload: {
+          user,
+          token,
+          location
+        }
+      })
+      // TODO: local storage setup
+    } catch (error) {
+      console.log(error)
+      dispatch({
+        type: 'register_user_error',
+        payload: { msg: error.response.data.msg }
+      })
+    }
+    clearAlert()
   }
 
   return (

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { useAppContext } from '../context/appContext'
 
 const initialState = {
-  name: '',
+  firstName: '',
   email: '',
   password: '',
   isRegistered: true
@@ -26,14 +26,14 @@ export default function Register() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    const { name, email, password, isRegistered } = values
+    const { firstName, email, password, isRegistered } = values
 
-    if (!email || !password || (!isRegistered && !name)) {
+    if (!email || !password || (!isRegistered && !firstName)) {
       displayAlert()
       return
     }
 
-    const currentUser = { name, email, password }
+    const currentUser = { firstName, email, password }
     if (isRegistered) {
       console.log('already registered')
     } else {
@@ -50,11 +50,11 @@ export default function Register() {
         {!values.isRegistered && (
           <FormGroup
             type="text"
-            name="name"
-            value={values.name}
+            name="firstName"
+            value={values.firstName}
             onChange={handleChange}
             text="name"
-            placeholder="enter name"
+            placeholder="enter first name"
           />
         )}
 
