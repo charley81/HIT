@@ -2,15 +2,20 @@ import { createContext, useContext, useReducer } from 'react'
 import reducer from './reducer'
 import axios from 'axios'
 
+//  set up user as soon as application loads...grab these items from local storage on initial load
+const token = localStorage.getItem('token')
+const user = localStorage.getItem('user')
+const userLocation = localStorage.getItem('location')
+
 export const initialState = {
   isLoading: false,
   showAlert: false,
   alertText: '',
   alertType: '',
-  user: null,
-  token: null,
-  userLocation: '',
-  drinkLocation: ''
+  user: user ? JSON.parse(user) : null,
+  token: token,
+  userLocation: userLocation || '',
+  drinkLocation: userLocation || ''
 }
 
 // setup context => returns a provider and a consumer
@@ -31,11 +36,23 @@ export function AppProvider({ children }) {
     }, 2000)
   }
 
+  function addUserToLocalStorage(user, token, location) {
+    localStorage.setItem('user', JSON.stringify(user))
+    localStorage.setItem('token', token)
+    localStorage.setItem('location', location)
+  }
+
+  function removeUserToLocalStorage() {
+    localStorage.removeItem('user')
+    localStorage.removeItem('token')
+    localStorage.removeItem('location')
+  }
+
   async function registerUser(currentUser) {
     dispatch({ type: 'register_user_begin' })
     try {
       const response = await axios.post('/api/v1/auth/register', currentUser)
-      console.log(response)
+      // console.log(response)
       const { user, token, location } = response.data
       dispatch({
         type: 'register_user_success',
@@ -45,9 +62,10 @@ export function AppProvider({ children }) {
           location
         }
       })
-      // TODO: local storage setup
+
+      addUserToLocalStorage(user, token, location)
     } catch (error) {
-      console.log(error)
+      // console.log(error)
       dispatch({
         type: 'register_user_error',
         payload: { msg: error.response.data.msg }
