@@ -20,8 +20,8 @@ export async function registerUser(req, res) {
 
   const user = await User.create({ firstName, email, password })
   // custom mongoose method for JWT created on userSchema
-  user.createJWT()
-  res.status(StatusCodes.CREATED).json({ user })
+  const token = user.createJWT()
+  res.status(StatusCodes.CREATED).json({ user, token })
 }
 
 // @desc login a user

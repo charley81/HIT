@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 const { Schema } = mongoose
 import validator from 'validator'
 import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 
 const userSchema = new Schema({
   firstName: {
@@ -49,7 +50,8 @@ userSchema.pre('save', async function () {
 
 // Custom method added to userSchema... use this on the created user in frontend to create a jwt
 userSchema.methods.createJWT = function () {
-  console.log(this)
+  // jtw.sign looks for three things (payload, secret, options)
+  return jwt.sign({ userId: this._id }, 'jwtSecret', { expiresIn: '1d' })
 }
 
 export default mongoose.model('User', userSchema)
