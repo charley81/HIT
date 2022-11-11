@@ -12,7 +12,7 @@ const initialState = {
 
 export default function Register() {
   const [values, setValues] = useState(initialState)
-  const { showAlert, isLoading, displayAlert } = useAppContext()
+  const { showAlert, isLoading, displayAlert, registerUser } = useAppContext()
 
   // global state and useNavigate
 
@@ -32,7 +32,13 @@ export default function Register() {
       displayAlert()
       return
     }
-    console.log(values)
+
+    const currentUser = { name, email, password }
+    if (isRegistered) {
+      console.log('already registered')
+    } else {
+      registerUser(currentUser)
+    }
   }
 
   return (
@@ -72,7 +78,7 @@ export default function Register() {
         />
 
         {/* submit btn */}
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary" disabled={isLoading}>
           Submit
         </button>
 

@@ -5,7 +5,10 @@ export const initialState = {
   isLoading: false,
   showAlert: false,
   alertText: '',
-  alertType: ''
+  alertType: '',
+  user: null,
+  token: null,
+  userLocation: ''
 }
 
 // setup context => returns a provider and a consumer
@@ -26,8 +29,12 @@ export function AppProvider({ children }) {
     }, 2000)
   }
 
+  async function registerUser(currentUser) {
+    console.log(currentUser)
+  }
+
   return (
-    <AppContext.Provider value={{ ...state, displayAlert }}>
+    <AppContext.Provider value={{ ...state, displayAlert, registerUser }}>
       {children}
     </AppContext.Provider>
   )
