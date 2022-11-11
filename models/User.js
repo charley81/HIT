@@ -51,7 +51,9 @@ userSchema.pre('save', async function () {
 // Custom method added to userSchema... use this on the created user in frontend to create a jwt
 userSchema.methods.createJWT = function () {
   // jtw.sign looks for three things (payload, secret, options)
-  return jwt.sign({ userId: this._id }, 'jwtSecret', { expiresIn: '1d' })
+  return jwt.sign({ userId: this._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_LIFETIME
+  })
 }
 
 export default mongoose.model('User', userSchema)
