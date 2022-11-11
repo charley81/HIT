@@ -21,7 +21,17 @@ export async function registerUser(req, res) {
   const user = await User.create({ firstName, email, password })
   // custom mongoose method for JWT created on userSchema
   const token = user.createJWT()
-  res.status(StatusCodes.CREATED).json({ user, token })
+
+  // we added the select: false to the password in the schema so that we don't show the password on the front end but it doesn't work when using .create()... So when returning the user we are hard coding what we want from the user... hard coding and not creating separate function to handle this because in the other controllers since not use .create the select: false will work
+  res.status(StatusCodes.CREATED).json({
+    user: {
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      location: user.location
+    },
+    token
+  })
 }
 
 // @desc login a user
