@@ -40,10 +40,16 @@ const userSchema = new Schema({
   // https://mongoosejs.com/docs/validation.html#custom-validators
 })
 
-// hash the password
+// hash the password.. run this before saving in DB
 userSchema.pre('save', async function () {
   const salt = await bcrypt.genSalt(10)
+  // this sets the password value to a hashed password
   this.password = await bcrypt.hash(this.password, salt)
 })
+
+// Custom method added to userSchema... use this on the created user in frontend to create a jwt
+userSchema.methods.createJWT = function () {
+  console.log(this)
+}
 
 export default mongoose.model('User', userSchema)
