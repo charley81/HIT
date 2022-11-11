@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Header, FormGroup, Alert } from '../components'
 import styled from 'styled-components'
 import { useAppContext } from '../context/appContext'
@@ -11,8 +12,18 @@ const initialState = {
 }
 
 export default function Register() {
+  const navigate = useNavigate()
   const [values, setValues] = useState(initialState)
-  const { showAlert, isLoading, displayAlert, registerUser } = useAppContext()
+  const { showAlert, isLoading, displayAlert, registerUser, user } =
+    useAppContext()
+
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate('/')
+      }, 2000)
+    }
+  }, [user, navigate])
 
   // global state and useNavigate
 
