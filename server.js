@@ -5,8 +5,14 @@ import notFoundMiddleware from './middleware/notFound.js'
 import errorHandlerMiddleware from './middleware/errorHandler.js'
 import authRouter from './routes/authRoutes.js'
 import drinksRouter from './routes/drinkRoutes.js'
+import morgan from 'morgan'
 import dotenv from 'dotenv'
 dotenv.config()
+
+// this makes it able to log your request in the node terminal... it shows the method, route, and status code.
+if (process.env.NODE_ENV !== 'production') {
+  app.use(morgan('dev'))
+}
 
 // Parse incoming request bodies in a middleware before your handlers, available under the req.body property
 app.use(express.json())
