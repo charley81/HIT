@@ -58,6 +58,8 @@ export async function loginUser(req, res) {
     throw new UnAuthenticatedError('invalid credentials')
   }
   const token = user.createJWT()
+
+  // don't show password
   user.password = undefined
   res.status(StatusCodes.OK).json({ user, token, location: user.location })
 }

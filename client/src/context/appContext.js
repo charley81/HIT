@@ -65,7 +65,6 @@ export function AppProvider({ children }) {
 
       addUserToLocalStorage(user, token, location)
     } catch (error) {
-      // console.log(error)
       dispatch({
         type: 'register_user_error',
         payload: { msg: error.response.data.msg }
@@ -74,8 +73,14 @@ export function AppProvider({ children }) {
     clearAlert()
   }
 
+  async function loginUser(currentUser) {
+    console.log(currentUser)
+  }
+
   return (
-    <AppContext.Provider value={{ ...state, displayAlert, registerUser }}>
+    <AppContext.Provider
+      value={{ ...state, displayAlert, registerUser, loginUser }}
+    >
       {children}
     </AppContext.Provider>
   )

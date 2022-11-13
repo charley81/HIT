@@ -14,7 +14,7 @@ const initialState = {
 export default function Register() {
   const navigate = useNavigate()
   const [values, setValues] = useState(initialState)
-  const { showAlert, isLoading, displayAlert, registerUser, user } =
+  const { showAlert, isLoading, displayAlert, registerUser, user, loginUser } =
     useAppContext()
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export default function Register() {
 
     const currentUser = { firstName, email, password }
     if (isRegistered) {
-      console.log('already registered')
+      loginUser(currentUser)
     } else {
       registerUser(currentUser)
     }
