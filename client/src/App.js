@@ -7,7 +7,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<div>home</div>} />
+        <Route path="/">
+          <Route path="info" element={<Info />} />
+          <Route path="all-drinks" element={<AllDrinks />} />
+          <Route path="add-drink" element={<AddDrink />} />
+          <Route path="profile" element={<Profile />} />
+        </Route>
         <Route path="/register" element={<Register />} />
         <Route path="/intro" element={<Intro />} />
         <Route path="*" element={<Error />} />
