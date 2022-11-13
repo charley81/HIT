@@ -14,7 +14,7 @@ const initialState = {
 export default function Register() {
   const navigate = useNavigate()
   const [values, setValues] = useState(initialState)
-  const { showAlert, isLoading, displayAlert, registerUser, user, loginUser } =
+  const { showAlert, isLoading, displayAlert, setupUser, user } =
     useAppContext()
 
   useEffect(() => {
@@ -46,9 +46,17 @@ export default function Register() {
 
     const currentUser = { firstName, email, password }
     if (isRegistered) {
-      loginUser(currentUser)
+      setupUser({
+        currentUser,
+        endPoint: 'login',
+        alertText: 'login successful'
+      })
     } else {
-      registerUser(currentUser)
+      setupUser({
+        currentUser,
+        endPoint: 'register',
+        alertText: 'register successful'
+      })
     }
   }
 

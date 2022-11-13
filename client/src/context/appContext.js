@@ -48,45 +48,20 @@ export function AppProvider({ children }) {
     localStorage.removeItem('location')
   }
 
-  async function registerUser(currentUser) {
-    dispatch({ type: 'register_user_begin' })
-    try {
-      const response = await axios.post('/api/v1/auth/register', currentUser)
-      // console.log(response)
-      const { user, token, location } = response.data
-      dispatch({
-        type: 'register_user_success',
-        payload: {
-          user,
-          token,
-          location
-        }
-      })
-
-      addUserToLocalStorage(user, token, location)
-    } catch (error) {
-      dispatch({
-        type: 'register_user_error',
-        payload: { msg: error.response.data.msg }
-      })
-    }
-    clearAlert()
-  }
-
-  async function loginUser(currentUser) {
-    dispatch({ type: 'login_user_begin' })
+  async function setupUser({ currentUser, endPoint, alertText }) {
+    dispatch({ type: 'setup_user_begin' })
 
     try {
-      const { data } = await axios.post('/api/v1/auth/login', currentUser)
+      const { data } = await axios.post(`/api/v1/auth/${endPoint}`, currentUser)
       const { user, token, location } = data
       dispatch({
-        type: 'login_user_success',
-        payload: { user, token, location }
+        type: 'setup_user_success',
+        payload: { user, token, location, alertText }
       })
       addUserToLocalStorage({ user, token, location })
     } catch (error) {
       dispatch({
-        type: 'login_user_error',
+        type: 'setup_user_error',
         payload: { msg: error.response.data.msg }
       })
     }
@@ -94,9 +69,7 @@ export function AppProvider({ children }) {
   }
 
   return (
-    <AppContext.Provider
-      value={{ ...state, displayAlert, registerUser, loginUser }}
-    >
+    <AppContext.Provider value={{ ...state, displayAlert, setupUser }}>
       {children}
     </AppContext.Provider>
   )

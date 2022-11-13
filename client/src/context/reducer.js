@@ -16,60 +16,34 @@ export default function reducer(state, action) {
         alertText: ''
       }
     }
-    case 'register_user_begin': {
+    case 'setup_user_begin': {
       return {
         ...state,
         isLoading: true
       }
     }
-    case 'register_user_success': {
+    case 'setup_user_success': {
+      const { user, token, location, alertText } = action.payload
       return {
         ...state,
-        user: action.payload.user,
-        token: action.payload.token,
-        userLocation: action.payload.location,
-        drinkLocation: action.payload.location,
+        user: user,
+        token: token,
+        userLocation: location,
+        drinkLocation: location,
         isLoading: false,
         showAlert: true,
         alertType: 'success',
-        alertText: 'you have been successfully registered'
+        alertText: alertText
       }
     }
-    case 'register_user_error': {
+    case 'setup_user_error': {
+      const { msg } = action.payload
       return {
         ...state,
         isLoading: false,
         showAlert: true,
         alertType: 'danger',
-        alertText: action.payload.msg
-      }
-    }
-    case 'login_user_begin': {
-      return {
-        ...state,
-        isLoading: true
-      }
-    }
-    case 'login_user_success': {
-      return {
-        ...state,
-        user: action.payload.user,
-        token: action.payload.token,
-        userLocation: action.payload.location,
-        drinkLocation: action.payload.location,
-        isLoading: false,
-        showAlert: true,
-        alertType: 'success',
-        alertText: 'login successful'
-      }
-    }
-    case 'login_user_error': {
-      return {
-        ...state,
-        isLoading: false,
-        showAlert: true,
-        alertType: 'danger',
-        alertText: action.payload.msg
+        alertText: msg
       }
     }
     default: {
