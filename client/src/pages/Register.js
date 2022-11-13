@@ -55,7 +55,7 @@ export default function Register() {
       setupUser({
         currentUser,
         endPoint: 'register',
-        alertText: 'register successful'
+        alertText: 'register successful '
       })
     }
   }
