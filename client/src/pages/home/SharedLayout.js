@@ -6,7 +6,7 @@ export default function sharedLayout() {
     <Section>
       <nav>
         <Link to="add-drink">Add Drink</Link>
-        <Link to="all-drinks">All Drinks</Link>
+        <Link to="">All Drinks</Link>
       </nav>
       <Outlet />
     </Section>

@@ -1,13 +1,19 @@
-import { Intro } from './pages'
+import { Intro, Error, Register, ProtectedRoute } from './pages'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AddDrink, AllDrinks, Info, Profile, SharedLayout } from './pages/home'
-import { Error, Register } from './pages'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <SharedLayout />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<AllDrinks />} />
           <Route path="info" element={<Info />} />
           <Route path="add-drink" element={<AddDrink />} />
