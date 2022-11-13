@@ -74,7 +74,23 @@ export function AppProvider({ children }) {
   }
 
   async function loginUser(currentUser) {
-    console.log(currentUser)
+    dispatch({ type: 'login_user_begin' })
+
+    try {
+      const { data } = await axios.post('/api/v1/auth/login', currentUser)
+      const { user, token, location } = data
+      dispatch({
+        type: 'login_user_success',
+        payload: { user, token, location }
+      })
+      addUserToLocalStorage({ user, token, location })
+    } catch (error) {
+      dispatch({
+        type: 'login_user_error',
+        payload: { msg: error.response.data.msg }
+      })
+    }
+    clearAlert()
   }
 
   return (
