@@ -7,9 +7,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/">
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<AllDrinks />} />
           <Route path="info" element={<Info />} />
-          <Route path="all-drinks" element={<AllDrinks />} />
           <Route path="add-drink" element={<AddDrink />} />
           <Route path="profile" element={<Profile />} />
         </Route>
