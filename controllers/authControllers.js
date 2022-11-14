@@ -68,5 +68,6 @@ export async function loginUser(req, res) {
 // @route POST /api/v1/auth/updateUser
 // @access private
 export async function updateUser(req, res) {
+  console.log(req.user)
   res.send('update user')
 }

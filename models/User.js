@@ -4,7 +4,7 @@ import validator from 'validator'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
   firstName: {
     type: String,
     required: [true, 'please provide a name'],
@@ -43,24 +43,23 @@ const userSchema = new Schema({
 })
 
 // hash the password.. run this before saving in DB
-userSchema.pre('save', async function () {
+UserSchema.pre('save', async function () {
   const salt = await bcrypt.genSalt(10)
   // this sets the password value to a hashed password
   this.password = await bcrypt.hash(this.password, salt)
 })
 
 // Custom method added to userSchema... use this on the created user in frontend to create a jwt
-userSchema.methods.createJWT = function () {
-  // jtw.sign looks for three things (payload, secret, options)
+UserSchema.methods.createJWT = function () {
   return jwt.sign({ userId: this._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_LIFETIME
   })
 }
 
 // compare user password with password for this user in DB
-userSchema.methods.comparePassword = async function (userPassword) {
+UserSchema.methods.comparePassword = async function (userPassword) {
   const isMatch = await bcrypt.compare(userPassword, this.password)
   return isMatch
 }
 
-export default mongoose.model('User', userSchema)
+export default mongoose.model('User', UserSchema)
