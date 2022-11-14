@@ -68,7 +68,6 @@ export function AppProvider({ children }) {
   }
 
   function addUserToLocalStorage(user, token, location) {
-    console.log(token)
     localStorage.setItem('user', JSON.stringify(user))
     localStorage.setItem('token', token)
     localStorage.setItem('location', location)

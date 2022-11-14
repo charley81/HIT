@@ -12,8 +12,8 @@ export const links = [
   },
   {
     id: 2,
-    text: 'Stats',
-    path: '/stats',
+    text: 'Info',
+    path: '/info',
     icon: <ImStatsBars />
   },
   {

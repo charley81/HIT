@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { HiOutlineMenuAlt4 } from 'react-icons/hi'
+import { HiOutlineMenuAlt4, HiOutlineLogout } from 'react-icons/hi'
 import { AiFillCaretDown } from 'react-icons/ai'
 import { useAppContext } from '../context/appContext'
 import styled from 'styled-components'
 
 export default function Navbar() {
-  const { toggleSidebar, logoutUser, user } = useAppContext()
   const [showLogout, setShowLogout] = useState(false)
+  const { toggleSidebar, logoutUser, user } = useAppContext()
 
   return (
     <Section>
@@ -28,7 +28,7 @@ export default function Navbar() {
                 onClick={logoutUser}
                 className={showLogout ? 'logout show-logout' : 'logout'}
               >
-                Logout
+                <HiOutlineLogout /> Logout
               </button>
             </div>
           </div>
@@ -66,6 +66,11 @@ const Section = styled.nav`
     display: flex;
     align-items: center;
     cursor: pointer;
+    position: relative;
+
+    p {
+      text-transform: capitalize;
+    }
   }
 
   .dropdown-btn-section {
@@ -74,6 +79,23 @@ const Section = styled.nav`
 
   .logout {
     display: none;
+  }
+
+  .show-logout {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 1rem;
+    padding: 1rem 0.5rem 1rem 1rem;
+    background-color: inherit;
+    border-radius: var(--borderRadius);
+    font-size: 1rem;
+    font-family: var(--fontFamily);
+    color: var(--colorDark);
+    cursor: pointer;
   }
 
   .menu-btn {

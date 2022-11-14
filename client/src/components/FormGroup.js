@@ -35,6 +35,7 @@ const Group = styled.div`
     border: none;
     border-bottom: 1px solid var(--colorDark);
     margin-bottom: 1rem;
+    background-color: var(--colorLight);
 
     &::placeholder {
       color: var(--colorGreyMid);
@@ -44,6 +45,8 @@ const Group = styled.div`
 
     &:focus {
       outline: none;
+      background-color: inherit;
+      background-color: var(--colorLight);
     }
   }
 `

@@ -1,13 +1,12 @@
 import { Outlet } from 'react-router-dom'
 import styled from 'styled-components'
-import { Navbar, MobileSidebar, DesktopSidebar } from '../../components'
+import { Navbar, Sidebar } from '../../components'
 
 export default function sharedLayout() {
   return (
     <Section>
       <main>
-        <MobileSidebar />
-        <DesktopSidebar />
+        <Sidebar />
         <div>
           <Navbar />
           <div className="page">
