@@ -1,3 +1,9 @@
+import styled from 'styled-components'
+
 export default function MobileSidebar() {
-  return <div>MobileSidebar</div>
+  return <Section>MobileSidebar</Section>
 }
+
+const Section = styled.aside`
+  display: none;
+`

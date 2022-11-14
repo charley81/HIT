@@ -10,50 +10,98 @@ export default function Navbar() {
 
   return (
     <Section>
-      {/* nav center */}
       <div className="nav-center">
         {/* logo */}
-        <div className="logo">
-          <h3>TDTR</h3>
-        </div>
+        <h3>TDTR</h3>
 
         {/* menu sections */}
         <div className="menu-section">
           {/* profile */}
-          <div className="profile">
-            {/* user name */}
-            <p className="name">{user?.firstName}</p>
-            {/* logout dropdown button */}
-            <button
-              className="dropdown-btn"
-              type="button"
-              onClick={() => setShowLogout(!showLogout)}
-            >
-              <AiFillCaretDown />
-            </button>
-            {/* logout */}
-            <div className={showLogout ? 'dropdown show-dropdown' : 'dropdown'}>
-              <button className="logout-btn" type="button" onClick={logoutUser}>
+          <div className="profile" onClick={() => setShowLogout(!showLogout)}>
+            <p>{user?.firstName}</p>
+            <div className="dropdown-btn-section">
+              <AiFillCaretDown className="dropdown-btn" type="button" />
+
+              {/* logout */}
+              <button
+                type="button"
+                onClick={logoutUser}
+                className={showLogout ? 'logout show-logout' : 'logout'}
+              >
                 Logout
               </button>
             </div>
           </div>
 
-          {/* nav menu */}
-          <div className="menu">
-            {/* menu button */}
-            <button
-              type="button"
-              className="toggle-btn"
-              onClick={toggleSidebar}
-            >
-              <HiOutlineMenuAlt4 />
-            </button>
-          </div>
+          {/* menu button */}
+          <HiOutlineMenuAlt4
+            type="button"
+            className="menu-btn"
+            onClick={toggleSidebar}
+          />
         </div>
       </div>
     </Section>
   )
 }
 
-const Section = styled.nav``
+const Section = styled.nav`
+  padding: 1rem;
+
+  .nav-center {
+    display: flex;
+    align-items: center;
+  }
+
+  h3 {
+    margin-right: auto;
+  }
+
+  .menu-section {
+    display: flex;
+    align-items: center;
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .dropdown-btn-section {
+    display: flex;
+  }
+
+  .logout {
+    display: none;
+  }
+
+  .menu-btn {
+    border: 1px solid var(--colorGreyMid);
+    border-radius: 50%;
+    font-size: 1.75rem;
+    padding: 0.25rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+
+    &:hover {
+      background-color: var(--colorDark);
+      color: var(--colorLight);
+    }
+  }
+
+  @media (min-width: 744px) {
+    .nav-center {
+      max-width: var(--maxWidthNavTablet);
+      margin: auto;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .nav-center {
+      max-width: var(--maxWidthNavDesktop);
+      margin: auto;
+    }
+  }
+`

@@ -6,6 +6,8 @@
   --transition: all 0.3s ease-in-out;
   --maxWidthTotal: 1024px;
   --maxWidthTablet: 506px;
+  --maxWidthNavTablet: 680px;
+  --maxWidthNavDesktop: 1024px;
   --formMaxDesktop: 536px;
   --colorPrimary: #ffb721;
   --colorLight: #fffdfa;
