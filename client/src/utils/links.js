@@ -6,7 +6,7 @@ import { ImStatsBars } from 'react-icons/im'
 export const links = [
   {
     id: 1,
-    text: 'All Drinks',
+    text: 'Drinks',
     path: '/',
     icon: <BiDrink />
   },
@@ -18,7 +18,7 @@ export const links = [
   },
   {
     id: 3,
-    text: 'Add Drink',
+    text: 'Add',
     path: '/add-drink',
     icon: <FaWpforms />
   },

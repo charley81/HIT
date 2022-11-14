@@ -14,9 +14,9 @@ export default function Sidebar() {
       <li key={id}>
         <Link
           to={path}
-          className={({ isActive }) =>
-            isActive ? 'nav-link active' : 'nav-link'
-          }
+          // className={({ isActive }) =>
+          //   isActive ? 'nav-link active' : 'nav-link'
+          // }
         >
           <span>{icon}</span>
           {text}
@@ -40,10 +40,56 @@ export default function Sidebar() {
 
 const Section = styled.aside`
   .sidebar-container {
-    display: none;
+    background: var(--colorLight);
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 125px;
+    height: 100%;
+    z-index: 999;
+    opacity: 0;
+    transition: var(--transition);
+    transform: translateX(100%);
+    padding: 1rem;
+    box-shadow: -1px 0px 12px 1px #aaaaaa;
+  }
+
+  .icon {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  a {
+    color: var(--colorDark);
   }
 
   .show-sidebar {
-    display: block;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  ul {
+    margin-top: 4rem;
+
+    li {
+      margin: 2rem 0;
+      display: flex;
+      align-items: center;
+
+      a {
+        color: var(--colorGreyMid);
+        transition: var(--transition);
+
+        &:hover {
+          color: var(--colorDark);
+          transform: scale(1.1);
+        }
+      }
+
+      span {
+        color: var(--colorDark);
+        margin-right: 0.5rem;
+      }
+    }
   }
 `

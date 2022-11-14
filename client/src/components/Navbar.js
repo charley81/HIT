@@ -47,6 +47,7 @@ export default function Navbar() {
 
 const Section = styled.nav`
   padding: 1rem;
+  z-index: 1;
 
   .nav-center {
     display: flex;
