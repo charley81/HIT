@@ -37,29 +37,18 @@ export function AppProvider({ children }) {
     }, 2000)
   }
 
-  function addUserToLocalStorage(user, token, location) {
-    localStorage.setItem('user', JSON.stringify(user))
-    localStorage.setItem('token', token)
-    localStorage.setItem('location', location)
-  }
-
-  function removeUserFromLocalStorage() {
-    localStorage.removeItem('user')
-    localStorage.removeItem('token')
-    localStorage.removeItem('location')
-  }
-
   async function setupUser({ currentUser, endPoint, alertText }) {
     dispatch({ type: 'setup_user_begin' })
 
     try {
       const { data } = await axios.post(`/api/v1/auth/${endPoint}`, currentUser)
       const { user, token, location } = data
+
       dispatch({
         type: 'setup_user_success',
         payload: { user, token, location, alertText }
       })
-      addUserToLocalStorage({ user, token, location })
+      addUserToLocalStorage(user, token, location)
     } catch (error) {
       dispatch({
         type: 'setup_user_error',
@@ -76,6 +65,19 @@ export function AppProvider({ children }) {
   function logoutUser() {
     dispatch({ type: 'logout_user' })
     removeUserFromLocalStorage()
+  }
+
+  function addUserToLocalStorage(user, token, location) {
+    console.log(token)
+    localStorage.setItem('user', JSON.stringify(user))
+    localStorage.setItem('token', token)
+    localStorage.setItem('location', location)
+  }
+
+  function removeUserFromLocalStorage() {
+    localStorage.removeItem('user')
+    localStorage.removeItem('token')
+    localStorage.removeItem('location')
   }
 
   return (
