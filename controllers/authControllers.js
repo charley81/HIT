@@ -68,6 +68,30 @@ export async function loginUser(req, res) {
 // @route POST /api/v1/auth/updateUser
 // @access private
 export async function updateUser(req, res) {
-  console.log(req.user)
-  res.send('update user')
+  const { email, firstName, lastName, location } = req.body
+
+  // check if the following value are provided if not, throw error
+  if (!email || !firstName || !lastName || !location) {
+    throw new BadRequestError('please provide all values')
+  }
+
+  // find the user _id == req.user.userId that is coming from the jwt.sign() payload
+  const user = await User.findOne({ _id: req.user.userId })
+
+  // update these values
+  user.email = email
+  user.firstName = firstName
+  user.lastName = lastName
+  user.location = location
+
+  // save the user
+  await user.save()
+
+  // create a new token
+  const token = user.createJWT()
+  res.status(StatusCodes.OK).json({
+    user,
+    token,
+    location: user.location
+  })
 }

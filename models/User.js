@@ -44,6 +44,11 @@ const UserSchema = new Schema({
 
 // hash the password.. run this before saving in DB
 UserSchema.pre('save', async function () {
+  //  this.modifiedPaths() returns an array of values that are different from the ones in the database... used during update user. if nothing updated, returns empty array
+
+  // check if modifying password and if not return... this stops error getting when updating user and not passing password to this user.save func
+  if (!this.isModified('password')) return
+
   const salt = await bcrypt.genSalt(10)
   // this sets the password value to a hashed password
   this.password = await bcrypt.hash(this.password, salt)
