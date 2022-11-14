@@ -1,3 +1,5 @@
+import { initialState } from './appContext'
+
 export default function reducer(state, action) {
   switch (action.type) {
     case 'display_alert': {
@@ -50,6 +52,15 @@ export default function reducer(state, action) {
       return {
         ...state,
         showSidebar: !state.showSidebar
+      }
+    }
+    case 'logout_user': {
+      return {
+        ...initialState,
+        user: null,
+        token: null,
+        userLocation: null,
+        drinkLocation: null
       }
     }
     default: {

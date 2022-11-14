@@ -43,7 +43,7 @@ export function AppProvider({ children }) {
     localStorage.setItem('location', location)
   }
 
-  function removeUserToLocalStorage() {
+  function removeUserFromLocalStorage() {
     localStorage.removeItem('user')
     localStorage.removeItem('token')
     localStorage.removeItem('location')
@@ -73,9 +73,14 @@ export function AppProvider({ children }) {
     dispatch({ type: 'toggle_sidebar' })
   }
 
+  function logoutUser() {
+    dispatch({ type: 'logout_user' })
+    removeUserFromLocalStorage()
+  }
+
   return (
     <AppContext.Provider
-      value={{ ...state, displayAlert, setupUser, toggleSidebar }}
+      value={{ ...state, displayAlert, setupUser, toggleSidebar, logoutUser }}
     >
       {children}
     </AppContext.Provider>

@@ -5,7 +5,7 @@ import { useAppContext } from '../context/appContext'
 import styled from 'styled-components'
 
 export default function Navbar() {
-  const { toggleSidebar } = useAppContext()
+  const { toggleSidebar, logoutUser, user } = useAppContext()
   const [showLogout, setShowLogout] = useState(false)
 
   return (
@@ -22,7 +22,7 @@ export default function Navbar() {
           {/* profile */}
           <div className="profile">
             {/* user name */}
-            <p className="name">John</p>
+            <p className="name">{user?.firstName}</p>
             {/* logout dropdown button */}
             <button
               className="dropdown-btn"
@@ -33,11 +33,7 @@ export default function Navbar() {
             </button>
             {/* logout */}
             <div className={showLogout ? 'dropdown show-dropdown' : 'dropdown'}>
-              <button
-                className="logout-btn"
-                type="button"
-                onClick={() => console.log('logout user')}
-              >
+              <button className="logout-btn" type="button" onClick={logoutUser}>
                 Logout
               </button>
             </div>
