@@ -29,6 +29,6 @@ export function updateDrink(req, res) {
 // @desc show user drink stats
 // @route GET /api/v1/drinks/stats
 // @access private
-export function showStats(req, res) {
-  res.send('show stats')
+export function showInfo(req, res) {
+  res.send('show info')
 }

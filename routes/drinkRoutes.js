@@ -3,13 +3,13 @@ const router = express.Router()
 import {
   createDrink,
   deleteDrink,
-  showStats,
+  showInfo,
   getAllDrinks,
   updateDrink
 } from '../controllers/drinkController.js'
 
 router.route('/').post(createDrink).get(getAllDrinks)
-router.route('/stats').get(showStats)
+router.route('/info').get(showInfo)
 router.route('/:id').delete(deleteDrink).patch(updateDrink)
 
 export default router

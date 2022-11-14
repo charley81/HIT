@@ -1,5 +1,6 @@
 import express from 'express'
 const router = express.Router()
+import authUser from '../middleware/authUser.js'
 import {
   registerUser,
   loginUser,
@@ -8,6 +9,6 @@ import {
 
 router.route('/register').post(registerUser)
 router.route('/login').post(loginUser)
-router.route('/updateUser').patch(updateUser)
+router.route('/updateUser').patch(authUser, updateUser)
 
 export default router

@@ -5,6 +5,7 @@ import notFoundMiddleware from './middleware/notFound.js'
 import errorHandlerMiddleware from './middleware/errorHandler.js'
 import authRouter from './routes/authRoutes.js'
 import drinksRouter from './routes/drinkRoutes.js'
+import authUser from './middleware/authUser.js'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
 dotenv.config()
@@ -26,7 +27,7 @@ app.get('/api/v1', (req, res) => {
 
 // routes setup
 app.use('/api/v1/auth', authRouter)
-app.use('/api/v1/drinks', drinksRouter)
+app.use('/api/v1/drinks', authUser, drinksRouter)
 
 // Middleware
 // looks for request that do not match any of your routes
