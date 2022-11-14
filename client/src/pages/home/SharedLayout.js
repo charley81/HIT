@@ -1,16 +1,22 @@
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import styled from 'styled-components'
+import { Navbar, MobileSidebar, DesktopSidebar } from '../../components'
 
 export default function sharedLayout() {
   return (
     <Section>
-      <nav>
-        <Link to="add-drink">Add Drink</Link>
-        <Link to="">All Drinks</Link>
-      </nav>
-      <Outlet />
+      <main>
+        <MobileSidebar />
+        <DesktopSidebar />
+        <div>
+          <Navbar />
+          <div className="page">
+            <Outlet />
+          </div>
+        </div>
+      </main>
     </Section>
   )
 }
 
-const Section = styled.div``
+const Section = styled.section``

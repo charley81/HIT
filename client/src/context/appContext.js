@@ -15,7 +15,8 @@ export const initialState = {
   user: user ? JSON.parse(user) : null,
   token: token,
   userLocation: userLocation || '',
-  drinkLocation: userLocation || ''
+  drinkLocation: userLocation || '',
+  showSidebar: false
 }
 
 // setup context => returns a provider and a consumer
@@ -68,8 +69,14 @@ export function AppProvider({ children }) {
     clearAlert()
   }
 
+  function toggleSidebar() {
+    dispatch({ type: 'toggle_sidebar' })
+  }
+
   return (
-    <AppContext.Provider value={{ ...state, displayAlert, setupUser }}>
+    <AppContext.Provider
+      value={{ ...state, displayAlert, setupUser, toggleSidebar }}
+    >
       {children}
     </AppContext.Provider>
   )

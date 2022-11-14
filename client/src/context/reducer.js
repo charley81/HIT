@@ -46,6 +46,12 @@ export default function reducer(state, action) {
         alertText: msg
       }
     }
+    case 'toggle_sidebar': {
+      return {
+        ...state,
+        showSidebar: !state.showSidebar
+      }
+    }
     default: {
       throw new Error(`no such action: ${action.type}`)
     }
