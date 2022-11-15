@@ -118,7 +118,6 @@ export default function reducer(state, action) {
       return {
         ...state,
         isLoading: false,
-
         showAlert: true,
         alertType: 'success',
         alertText: 'new drink added'
@@ -131,6 +130,21 @@ export default function reducer(state, action) {
         showAlert: true,
         alertType: 'danger',
         alertText: action.payload.msg
+      }
+    }
+    case 'get_drinks_begin': {
+      return {
+        ...state,
+        isLoading: true,
+        showAlert: false
+      }
+    }
+    case 'get_drinks_success': {
+      return {
+        ...state,
+        isLoading: false,
+        drinks: action.payload.drinks,
+        totalDrinks: action.payload.totalDrinks
       }
     }
     default: {

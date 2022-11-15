@@ -7,6 +7,7 @@ const token = localStorage.getItem('token')
 const user = localStorage.getItem('user')
 const userLocation = localStorage.getItem('location')
 
+// initial state
 export const initialState = {
   // user
   isLoading: false,
@@ -19,6 +20,10 @@ export const initialState = {
   showSidebar: false,
 
   // drinks
+  drinks: [],
+  totalDrinks: 0,
+  page: 1,
+  numOfPages: 1,
   isEditing: false,
   editDrinkId: '',
   drinkName: '',
@@ -62,6 +67,7 @@ export function AppProvider({ children }) {
       return response
     },
     error => {
+      // status code 401 = unauthorized
       if (error.response.status === 401) {
         logoutUser()
       }
@@ -69,17 +75,20 @@ export function AppProvider({ children }) {
     }
   )
 
+  // display alert
   function displayAlert() {
     dispatch({ type: 'display_alert' })
     clearAlert()
   }
 
+  // clear alert
   function clearAlert() {
     setTimeout(() => {
       dispatch({ type: 'clear_alert' })
     }, 2000)
   }
 
+  // setup user
   async function setupUser({ currentUser, endPoint, alertText }) {
     dispatch({ type: 'setup_user_begin' })
 
@@ -101,6 +110,7 @@ export function AppProvider({ children }) {
     clearAlert()
   }
 
+  // update user
   async function updateUser(currentUser) {
     dispatch({ type: 'update_user_begin' })
     try {
@@ -125,27 +135,32 @@ export function AppProvider({ children }) {
     clearAlert()
   }
 
+  // toggle sidebar
   function toggleSidebar() {
     dispatch({ type: 'toggle_sidebar' })
   }
 
+  // logout user
   function logoutUser() {
     dispatch({ type: 'logout_user' })
     removeUserFromLocalStorage()
   }
 
+  // add user to local storage
   function addUserToLocalStorage(user, token, location) {
     localStorage.setItem('user', JSON.stringify(user))
     localStorage.setItem('token', token)
     localStorage.setItem('location', location)
   }
 
+  // remove user from local storage
   function removeUserFromLocalStorage() {
     localStorage.removeItem('user')
     localStorage.removeItem('token')
     localStorage.removeItem('location')
   }
 
+  // handle add/edit form input change
   function handleChange({ name, value }) {
     dispatch({
       type: 'handle_change',
@@ -153,10 +168,12 @@ export function AppProvider({ children }) {
     })
   }
 
+  // clear add/edit from input values
   function clearValues() {
     dispatch({ type: 'clear_values' })
   }
 
+  // create drink
   async function createDrink() {
     dispatch({ type: 'create_drink_begin' })
 
@@ -191,6 +208,27 @@ export function AppProvider({ children }) {
     clearAlert()
   }
 
+  // get all drinks
+  async function getDrinks() {
+    let url = '/drinks'
+
+    dispatch({ type: 'get_drinks_begin' })
+
+    try {
+      const { data } = await authFetch(url)
+      const { drinks, totalDrinks, numOfPages } = data
+      dispatch({
+        type: 'get_drinks_success',
+        payload: { drinks, totalDrinks, numOfPages }
+      })
+    } catch (error) {
+      console.log(error.response)
+      logoutUser()
+    }
+
+    clearAlert()
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -202,7 +240,8 @@ export function AppProvider({ children }) {
         updateUser,
         handleChange,
         clearValues,
-        createDrink
+        createDrink,
+        getDrinks
       }}
     >
       {children}
