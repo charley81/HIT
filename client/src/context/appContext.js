@@ -26,6 +26,14 @@ const AppContext = createContext()
 export function AppProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState)
 
+  // setup base url and headers so that you don't have to write these on every request
+  const authFetch = axios.create({
+    baseURL: '/api/v1',
+    headers: {
+      Authorization: `Bearer ${state.token}`
+    }
+  })
+
   function displayAlert() {
     dispatch({ type: 'display_alert' })
     clearAlert()
@@ -60,15 +68,7 @@ export function AppProvider({ children }) {
 
   async function updateUser(currentUser) {
     try {
-      const { data } = await axios.patch(
-        '/api/v1/auth/updateUser',
-        currentUser,
-        {
-          headers: {
-            Authorization: `Bearer ${state.token}`
-          }
-        }
-      )
+      const { data } = await authFetch.patch('auth/updateUser', currentUser)
       console.log(data)
     } catch (error) {
       console.log(error.response)
