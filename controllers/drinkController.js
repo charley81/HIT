@@ -6,16 +6,22 @@ import { BadRequestError, NotFoundError } from '../errors/index.js'
 // @route POST /api/v1/drinks
 // @access private
 export async function createDrink(req, res) {
-  const { name, type, breweryLocation, breweryName, thoughts, rating } =
-    req.body
+  const {
+    drinkName,
+    drinkType,
+    breweryLocation,
+    breweryName,
+    thoughts,
+    drinkRating
+  } = req.body
 
   if (
-    !name ||
-    !type ||
+    !drinkName ||
+    !drinkType ||
     !breweryLocation ||
     !breweryName ||
     !thoughts ||
-    !rating
+    !drinkRating
   ) {
     throw new BadRequestError('please provide all values')
   }

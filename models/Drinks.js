@@ -6,12 +6,12 @@ const DrinksSchema = new Schema(
     /**
      * name, type, location, brewery name, thoughts, rating(number), date added
      */
-    name: {
+    drinkName: {
       type: String,
       required: [true, 'please provide a drink name'],
       maxLength: 15
     },
-    type: {
+    drinkType: {
       type: String,
       required: [true, 'please provide a drink type'],
       maxLength: 15,
@@ -32,7 +32,7 @@ const DrinksSchema = new Schema(
       required: [true, 'please provide your thoughts about this drink'],
       default: 'I love this beer'
     },
-    rating: {
+    drinkRating: {
       type: Number,
       required: [true, 'please provide a rating'],
       min: 1,

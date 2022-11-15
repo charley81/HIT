@@ -8,6 +8,7 @@ const user = localStorage.getItem('user')
 const userLocation = localStorage.getItem('location')
 
 export const initialState = {
+  // user
   isLoading: false,
   showAlert: false,
   alertText: '',
@@ -15,8 +16,17 @@ export const initialState = {
   user: user ? JSON.parse(user) : null,
   token: token,
   userLocation: userLocation || '',
+  showSidebar: false,
+
+  // drinks
+  isEditing: false,
+  editDrinkId: '',
+  drinkName: '',
+  drinkType: '',
   drinkLocation: userLocation || '',
-  showSidebar: false
+  breweryName: '',
+  thoughts: '',
+  drinkRating: 1
 }
 
 // setup context => returns a provider and a consumer
