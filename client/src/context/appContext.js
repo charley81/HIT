@@ -28,11 +28,36 @@ export function AppProvider({ children }) {
 
   // setup base url and headers so that you don't have to write these on every request
   const authFetch = axios.create({
-    baseURL: '/api/v1',
-    headers: {
-      Authorization: `Bearer ${state.token}`
-    }
+    baseURL: '/api/v1'
   })
+
+  // https://axios-http.com/docs/interceptors
+  // axios interceptors are basically middleware for axios they allow you to add functionality as the request leave and as they come back
+  // axios interceptors gives us a way to handle 401 response (authentication errors) programmatically
+
+  // request interceptor => handles setting the bearer token for each request
+  authFetch.interceptors.request.use(
+    config => {
+      config.headers['Authorization'] = `Bearer ${state.token}`
+      return config
+    },
+    error => {
+      return Promise.reject(error)
+    }
+  )
+
+  // response interceptor => will use to handle errors
+  authFetch.interceptors.response.use(
+    response => {
+      return response
+    },
+    error => {
+      if (error.response.status === 401) {
+        console.log('AUTH ERROR')
+      }
+      return Promise.reject(error)
+    }
+  )
 
   function displayAlert() {
     dispatch({ type: 'display_alert' })
