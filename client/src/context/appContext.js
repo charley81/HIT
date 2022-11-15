@@ -58,6 +58,10 @@ export function AppProvider({ children }) {
     clearAlert()
   }
 
+  async function updateUser(currentUser) {
+    console.log(currentUser)
+  }
+
   function toggleSidebar() {
     dispatch({ type: 'toggle_sidebar' })
   }
@@ -81,7 +85,14 @@ export function AppProvider({ children }) {
 
   return (
     <AppContext.Provider
-      value={{ ...state, displayAlert, setupUser, toggleSidebar, logoutUser }}
+      value={{
+        ...state,
+        displayAlert,
+        setupUser,
+        toggleSidebar,
+        logoutUser,
+        updateUser
+      }}
     >
       {children}
     </AppContext.Provider>

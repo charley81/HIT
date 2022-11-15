@@ -14,6 +14,7 @@ const Section = styled.section`
 
   h1 {
     font-size: 64px;
+    text-transform: capitalize;
   }
 
   @media screen and (min-width: 744px) {
