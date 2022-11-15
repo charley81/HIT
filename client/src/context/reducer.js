@@ -63,6 +63,34 @@ export default function reducer(state, action) {
         drinkLocation: null
       }
     }
+    case 'update_user_begin': {
+      return {
+        ...initialState,
+        isLoading: true
+      }
+    }
+    case 'update_user_success': {
+      return {
+        ...initialState,
+        isLoading: false,
+        token: action.payload.token,
+        user: action.payload.user,
+        userLocation: action.payload.location,
+        drinkLocation: action.payload.location,
+        showAlert: true,
+        alertType: 'success',
+        alertText: 'user profile updated'
+      }
+    }
+    case 'update_user_error': {
+      return {
+        ...initialState,
+        isLoading: false,
+        showAlert: true,
+        alertType: 'danger',
+        alertText: action.payload.msg
+      }
+    }
     default: {
       throw new Error(`no such action: ${action.type}`)
     }

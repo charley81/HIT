@@ -92,12 +92,25 @@ export function AppProvider({ children }) {
   }
 
   async function updateUser(currentUser) {
+    dispatch({ type: 'update_user_begin' })
     try {
       const { data } = await authFetch.patch('auth/updateUser', currentUser)
-      console.log(data)
+
+      const { user, token, location } = data
+
+      dispatch({
+        type: 'update_user_success',
+        payload: { user, token, location }
+      })
+
+      addUserToLocalStorage({ user, token, location })
     } catch (error) {
-      console.log(error.response)
+      dispatch({
+        type: 'update_user_error',
+        payload: { msg: error.response.data.msg }
+      })
     }
+    clearAlert()
   }
 
   function toggleSidebar() {
