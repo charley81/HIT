@@ -97,6 +97,11 @@ const Section = styled.nav`
     font-family: var(--fontFamily);
     color: var(--colorDark);
     cursor: pointer;
+    transition: var(--transition);
+
+    &:hover {
+      color: var(--colorDanger);
+    }
   }
 
   .menu-btn {

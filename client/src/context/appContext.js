@@ -31,7 +31,10 @@ export const initialState = {
   drinkLocation: userLocation || '',
   breweryName: '',
   thoughts: '',
-  drinkRating: 1
+  drinkRating: 1,
+
+  // sort
+  sortOptions: ['a-z', 'z-a', 'high-to-low', 'low-to-high']
 }
 
 // setup context => returns a provider and a consumer
@@ -223,7 +226,7 @@ export function AppProvider({ children }) {
       })
     } catch (error) {
       console.log(error.response)
-      logoutUser()
+      // logoutUser()
     }
 
     clearAlert()

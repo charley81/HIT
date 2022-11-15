@@ -90,3 +90,23 @@ img {
   background-color: var(--colorSuccess);
   color: var(--colorLight);
 }
+
+/* loader */
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  width: 6rem;
+  height: 6rem;
+  border: 8px solid var(--colorGreyMid);
+  border-radius: 50%;
+  border-top-color: var(--colorPrimary);
+  animation: spinner 2s linear infinite;
+}
+
+.loading-center {
+  margin: 0 auto;
+}
