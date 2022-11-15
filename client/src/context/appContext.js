@@ -53,7 +53,7 @@ export function AppProvider({ children }) {
     },
     error => {
       if (error.response.status === 401) {
-        console.log('AUTH ERROR')
+        logoutUser()
       }
       return Promise.reject(error)
     }
@@ -105,10 +105,12 @@ export function AppProvider({ children }) {
 
       addUserToLocalStorage({ user, token, location })
     } catch (error) {
-      dispatch({
-        type: 'update_user_error',
-        payload: { msg: error.response.data.msg }
-      })
+      if (error.response.status !== 401) {
+        dispatch({
+          type: 'update_user_error',
+          payload: { msg: error.response.data.msg }
+        })
+      }
     }
     clearAlert()
   }

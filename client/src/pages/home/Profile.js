@@ -13,10 +13,10 @@ export default function Profile() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    // if (!firstName || !email || !lastName || !location) {
-    //   displayAlert()
-    //   return
-    // }
+    if (!firstName || !email || !lastName || !location) {
+      displayAlert()
+      return
+    }
     updateUser({ firstName, lastName, email, location })
   }
 
