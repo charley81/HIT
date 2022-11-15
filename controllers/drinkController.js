@@ -43,7 +43,11 @@ export async function deleteDrink(req, res) {
 // @route GET /api/v1/drinks
 // @access private
 export async function getAllDrinks(req, res) {
-  res.send('get all drinks')
+  const drinks = await Drink.find({ createdBy: req.user.userId })
+
+  res
+    .status(StatusCodes.OK)
+    .json({ drinks, totalDrinks: drinks.length, numOfPages: 1 })
 }
 
 // @desc update a drink
