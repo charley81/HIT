@@ -146,6 +146,51 @@ export function AppProvider({ children }) {
     localStorage.removeItem('location')
   }
 
+  function handleChange({ name, value }) {
+    dispatch({
+      type: 'handle_change',
+      payload: { name, value }
+    })
+  }
+
+  function clearValues() {
+    dispatch({ type: 'clear_values' })
+  }
+
+  async function createDrink() {
+    dispatch({ type: 'create_drink_begin' })
+
+    try {
+      const {
+        drinkName,
+        drinkLocation,
+        drinkRating,
+        drinkType,
+        breweryName,
+        thoughts
+      } = state
+
+      await authFetch.post('/drinks', {
+        drinkLocation,
+        drinkName,
+        drinkRating,
+        drinkType,
+        breweryName,
+        thoughts
+      })
+
+      dispatch({ type: 'create_drink_success' })
+      dispatch({ type: 'clear_values' })
+    } catch (error) {
+      if (error.response.status === 401) return
+      dispatch({
+        type: 'create_drink_error',
+        payload: { msg: error.response.data.msg }
+      })
+    }
+    clearAlert()
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -154,7 +199,10 @@ export function AppProvider({ children }) {
         setupUser,
         toggleSidebar,
         logoutUser,
-        updateUser
+        updateUser,
+        handleChange,
+        clearValues,
+        createDrink
       }}
     >
       {children}

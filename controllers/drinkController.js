@@ -9,7 +9,7 @@ export async function createDrink(req, res) {
   const {
     drinkName,
     drinkType,
-    breweryLocation,
+    drinkLocation,
     breweryName,
     thoughts,
     drinkRating
@@ -18,7 +18,7 @@ export async function createDrink(req, res) {
   if (
     !drinkName ||
     !drinkType ||
-    !breweryLocation ||
+    !drinkLocation ||
     !breweryName ||
     !thoughts ||
     !drinkRating

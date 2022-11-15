@@ -3,9 +3,6 @@ import { Schema } from 'mongoose'
 
 const DrinksSchema = new Schema(
   {
-    /**
-     * name, type, location, brewery name, thoughts, rating(number), date added
-     */
     drinkName: {
       type: String,
       required: [true, 'please provide a drink name'],
@@ -17,7 +14,7 @@ const DrinksSchema = new Schema(
       maxLength: 15,
       default: 'pilsner'
     },
-    breweryLocation: {
+    drinkLocation: {
       type: String,
       required: [true, 'please provide a location'],
       default: 'my city'

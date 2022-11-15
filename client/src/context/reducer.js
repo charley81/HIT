@@ -91,6 +91,48 @@ export default function reducer(state, action) {
         alertText: action.payload.msg
       }
     }
+    case 'handle_change': {
+      return {
+        ...state,
+        [action.payload.name]: action.payload.value
+      }
+    }
+    case 'clear_values': {
+      const initialState = {
+        isEditing: false,
+        editDrinkId: '',
+        drinkName: '',
+        drinkType: '',
+        drinkLocation: state.userLocation || '',
+        breweryName: '',
+        thoughts: '',
+        drinkRating: 1
+      }
+
+      return { ...state, ...initialState }
+    }
+    case 'create_drink_begin': {
+      return { ...state, isLoading: true }
+    }
+    case 'create_drink_success': {
+      return {
+        ...state,
+        isLoading: false,
+
+        showAlert: true,
+        alertType: 'success',
+        alertText: 'new drink added'
+      }
+    }
+    case 'create_drink_error': {
+      return {
+        ...state,
+        isLoading: false,
+        showAlert: true,
+        alertType: 'danger',
+        alertText: action.payload.msg
+      }
+    }
     default: {
       throw new Error(`no such action: ${action.type}`)
     }

@@ -11,10 +11,12 @@ export default function AddDrink() {
     displayAlert,
     drinkName,
     drinkType,
-    breweryLocation,
+    drinkLocation,
     breweryName,
     thoughts,
-    drinkRating
+    drinkRating,
+    handleChange,
+    createDrink
   } = useAppContext()
 
   function handleSubmit(e) {
@@ -23,7 +25,7 @@ export default function AddDrink() {
     if (
       !drinkName ||
       !drinkType ||
-      !breweryLocation ||
+      !drinkLocation ||
       !breweryName ||
       !thoughts ||
       !drinkRating
@@ -32,13 +34,16 @@ export default function AddDrink() {
       return
     }
 
-    console.log('created drink')
+    if (isEditing) {
+      return
+    }
+    createDrink()
   }
 
   function handleDrinkInput(e) {
     const name = e.target.name
     const value = e.target.value
-    console.log(`${name}:${value}`)
+    handleChange({ name, value })
   }
 
   return (
@@ -64,8 +69,8 @@ export default function AddDrink() {
         />
         <FormGroup
           type="text"
-          name="breweryLocation"
-          value={breweryLocation}
+          name="drinkLocation"
+          value={drinkLocation}
           onChange={handleDrinkInput}
           text="Location"
           placeholder="enter drink location... Charlotte, NC"
