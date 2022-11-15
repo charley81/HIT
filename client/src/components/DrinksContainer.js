@@ -38,4 +38,10 @@ export default function DrinksContainer() {
   )
 }
 
-const Section = styled.section``
+const Section = styled.section`
+  .drinks {
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
+  }
+`

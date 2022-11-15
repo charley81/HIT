@@ -232,6 +232,16 @@ export function AppProvider({ children }) {
     clearAlert()
   }
 
+  // edit drink
+  function editDrink(id) {
+    console.log(`edit drink ${id}`)
+  }
+
+  // delete drink
+  function deleteDrink(id) {
+    console.log(`delete drink ${id}`)
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -244,7 +254,9 @@ export function AppProvider({ children }) {
         handleChange,
         clearValues,
         createDrink,
-        getDrinks
+        getDrinks,
+        editDrink,
+        deleteDrink
       }}
     >
       {children}
