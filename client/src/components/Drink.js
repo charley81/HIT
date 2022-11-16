@@ -15,7 +15,7 @@ export default function Drink({
   breweryName,
   thoughts
 }) {
-  const { editDrink, deleteDrink } = useAppContext()
+  const { setEditDrink, deleteDrink } = useAppContext()
   let date = moment(createdAt).format('Do MMM YYYY')
 
   return (
@@ -38,14 +38,14 @@ export default function Drink({
         <div className="buttons">
           <Link
             to="/add-drink"
-            className="btn edit-btn"
-            onClick={() => editDrink(id)}
+            className="btn-small edit-btn"
+            onClick={() => setEditDrink(id)}
           >
             Edit
           </Link>
           <button
             type="button"
-            className="btn delete-btn"
+            className="btn-small delete-btn"
             onClick={() => deleteDrink(id)}
           >
             Delete

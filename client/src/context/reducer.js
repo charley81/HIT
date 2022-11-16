@@ -147,6 +147,29 @@ export default function reducer(state, action) {
         totalDrinks: action.payload.totalDrinks
       }
     }
+    case 'set_edit_drink': {
+      const drink = state.drinks.find(drink => drink._id === action.payload.id)
+      const {
+        _id,
+        drinkLocation,
+        drinkName,
+        drinkType,
+        breweryName,
+        thoughts,
+        drinkRating
+      } = drink
+      return {
+        ...state,
+        isEditing: true,
+        editJobId: _id,
+        drinkLocation,
+        drinkName,
+        drinkType,
+        breweryName,
+        thoughts,
+        drinkRating
+      }
+    }
     default: {
       throw new Error(`no such action: ${action.type}`)
     }

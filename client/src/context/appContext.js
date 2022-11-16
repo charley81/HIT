@@ -232,9 +232,17 @@ export function AppProvider({ children }) {
     clearAlert()
   }
 
+  // set edit drink
+  function setEditDrink(id) {
+    dispatch({
+      type: 'set_edit_drink',
+      payload: { id }
+    })
+  }
+
   // edit drink
-  function editDrink(id) {
-    console.log(`edit drink ${id}`)
+  function editDrink() {
+    console.log('editing drink')
   }
 
   // delete drink
@@ -255,8 +263,9 @@ export function AppProvider({ children }) {
         clearValues,
         createDrink,
         getDrinks,
-        editDrink,
-        deleteDrink
+        setEditDrink,
+        deleteDrink,
+        editDrink
       }}
     >
       {children}

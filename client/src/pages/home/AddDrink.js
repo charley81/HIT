@@ -16,7 +16,8 @@ export default function AddDrink() {
     thoughts,
     drinkRating,
     handleChange,
-    createDrink
+    createDrink,
+    editDrink
   } = useAppContext()
 
   function handleSubmit(e) {
@@ -35,6 +36,7 @@ export default function AddDrink() {
     }
 
     if (isEditing) {
+      editDrink()
       return
     }
     createDrink()
