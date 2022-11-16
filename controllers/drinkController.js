@@ -3,6 +3,7 @@ import { StatusCodes } from 'http-status-codes'
 import { BadRequestError, NotFoundError } from '../errors/index.js'
 import checkPermissions from '../utils/checkPermission.js'
 import mongoose from 'mongoose'
+import moment from 'moment'
 
 // @desc create a drink
 // @route POST /api/v1/drinks
@@ -140,6 +141,22 @@ export async function showInfo(req, res) {
       $limit: 6
     }
   ])
+
+  monthlyDrinks = monthlyDrinks
+    .map(drink => {
+      const {
+        _id: { year, month },
+        count
+      } = drink
+
+      const date = moment()
+        .month(month - 1) // accepts 0 - 11
+        .year(year)
+        .format('MMM Y')
+
+      return { date, count }
+    })
+    .reverse() // so that oldest month will show first in chart
 
   res.status(StatusCodes.OK).json({ monthlyDrinks })
 }
