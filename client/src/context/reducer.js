@@ -200,6 +200,20 @@ export default function reducer(state, action) {
         alertText: action.payload.msg
       }
     }
+    case 'show_info_begin': {
+      return {
+        ...state,
+        isLoading: true,
+        showAlert: false
+      }
+    }
+    case 'show_info_success': {
+      return {
+        ...state,
+        isLoading: false,
+        monthlyDrinks: action.payload.monthlyDrinks
+      }
+    }
     default: {
       throw new Error(`no such action: ${action.type}`)
     }

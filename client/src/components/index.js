@@ -5,6 +5,8 @@ import Navbar from './Navbar'
 import Sidebar from './Sidebar'
 import DrinksContainer from './DrinksContainer'
 import SearchContainer from './SearchContainer'
+import Loading from './Loading'
+import BarChart from './BarChart'
 
 export {
   Header,
@@ -13,5 +15,7 @@ export {
   Navbar,
   Sidebar,
   DrinksContainer,
-  SearchContainer
+  SearchContainer,
+  Loading,
+  BarChart
 }

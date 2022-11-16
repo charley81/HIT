@@ -286,6 +286,24 @@ export function AppProvider({ children }) {
     }
   }
 
+  // show info
+  async function showInfo() {
+    dispatch({ type: 'show_info_begin' })
+
+    try {
+      const { data } = await authFetch('/drinks/info')
+      dispatch({
+        type: 'show_info_success',
+        payload: {
+          monthlyDrinks: data.monthlyDrinks
+        }
+      })
+    } catch (error) {
+      logoutUser()
+    }
+    clearAlert()
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -301,7 +319,8 @@ export function AppProvider({ children }) {
         getDrinks,
         setEditDrink,
         deleteDrink,
-        editDrink
+        editDrink,
+        showInfo
       }}
     >
       {children}
