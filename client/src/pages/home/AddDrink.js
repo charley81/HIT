@@ -17,7 +17,8 @@ export default function AddDrink() {
     drinkRating,
     handleChange,
     createDrink,
-    editDrink
+    editDrink,
+    clearValues
   } = useAppContext()
 
   function handleSubmit(e) {
@@ -107,6 +108,15 @@ export default function AddDrink() {
           Submit
         </button>
       </form>
+      <button
+        className="clear"
+        onClick={e => {
+          e.preventDefault()
+          clearValues()
+        }}
+      >
+        <p>clear values</p>
+      </button>
     </Section>
   )
 }
@@ -117,7 +127,7 @@ const Section = styled.section`
   margin: auto;
 
   form {
-    margin: 2rem 0;
+    margin: 2rem 0 0;
   }
 
   button {
@@ -143,6 +153,24 @@ const Section = styled.section`
     width: 100%;
     background-color: inherit;
     margin-top: 0.5rem;
+  }
+
+  .clear {
+    background-color: inherit;
+    cursor: pointer;
+    background: var(--colorGreyDark);
+    padding: 0.5rem;
+    border: 1px solid transparent;
+    border-radius: var(--borderRadius);
+    font-family: var(--fontFamily);
+    transition: var(--transition);
+    color: var(--colorLight);
+
+    &:hover {
+      background-color: transparent;
+      border: 1px solid var(--colorGreyDark);
+      color: var(--colorGreyDark);
+    }
   }
 
   @media (min-width: 1024px) {
