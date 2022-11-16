@@ -215,7 +215,12 @@ export function AppProvider({ children }) {
 
   // get all drinks
   async function getDrinks() {
-    let url = '/drinks'
+    // TODO: add page
+    const { search, sort } = state
+    let url = `/drinks?sort=${sort}`
+    if (search) {
+      url = url + `&search=${search}`
+    }
 
     dispatch({ type: 'get_drinks_begin' })
 
@@ -307,7 +312,7 @@ export function AppProvider({ children }) {
   }
 
   function clearFilters() {
-    console.log('clear filters')
+    dispatch({ type: 'clear_filters' })
   }
 
   return (

@@ -1,5 +1,6 @@
 import Header from './Header'
 import FormGroup from './FormGroup'
+import FormGroupSelect from './FormGroupSelect'
 import Alert from './Alert'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
@@ -17,5 +18,6 @@ export {
   DrinksContainer,
   SearchContainer,
   Loading,
-  BarChart
+  BarChart,
+  FormGroupSelect
 }

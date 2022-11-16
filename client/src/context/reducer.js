@@ -214,6 +214,13 @@ export default function reducer(state, action) {
         monthlyDrinks: action.payload.monthlyDrinks
       }
     }
+    case 'clear_filters': {
+      return {
+        ...state,
+        search: '',
+        sort: 'latest'
+      }
+    }
     default: {
       throw new Error(`no such action: ${action.type}`)
     }

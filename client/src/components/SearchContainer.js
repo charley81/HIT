@@ -1,7 +1,6 @@
-import { FormGroup, FromGroupSelect } from '.'
+import { FormGroup, FormGroupSelect } from '.'
 import { useAppContext } from '../context/appContext'
 import styled from 'styled-components'
-import { useContext } from 'react'
 
 export default function SearchContainer() {
   const { isLoading, search, sort, sortOptions, handleChange, clearFilters } =
@@ -15,6 +14,11 @@ export default function SearchContainer() {
     })
   }
 
+  function handleSubmit(e) {
+    e.preventDefault()
+    clearFilters()
+  }
+
   return (
     <Section>
       <form>
@@ -22,13 +26,24 @@ export default function SearchContainer() {
           type="text"
           name="search"
           value={search}
-          onChange={handleSearch}
+          handleChange={handleSearch}
           placeholder="search beer types i.e.. stout, ipa"
+        />
+        <FormGroupSelect
+          name="sort"
+          value={sort}
+          handleChange={handleSearch}
+          list={sortOptions}
         />
 
         {/* submit btn */}
-        <button type="submit" className="btn btn-primary" disabled={isLoading}>
-          Submit
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={isLoading}
+          onClick={handleSubmit}
+        >
+          Clear Filters
         </button>
       </form>
     </Section>

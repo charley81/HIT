@@ -34,6 +34,9 @@ export default function Drink({
       <main>
         <p>{thoughts}</p>
       </main>
+      <div className="type">
+        <p>Type: {drinkType}</p>
+      </div>
       <footer>
         <div className="buttons">
           <Link

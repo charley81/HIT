@@ -4,7 +4,7 @@ export default function Input({
   type,
   name,
   value,
-  onChange,
+  handleChange,
   text,
   placeholder
 }) {
@@ -16,7 +16,7 @@ export default function Input({
         name={name}
         value={value}
         placeholder={placeholder}
-        onChange={onChange}
+        onChange={handleChange}
       />
     </Group>
   )

@@ -5,11 +5,12 @@ import Drink from './Drink'
 import styled from 'styled-components'
 
 export default function DrinksContainer() {
-  const { getDrinks, drinks, isLoading, totalDrinks } = useAppContext()
+  const { getDrinks, drinks, isLoading, totalDrinks, search, sort } =
+    useAppContext()
 
   useEffect(() => {
     getDrinks()
-  }, [])
+  }, [search, sort])
 
   if (isLoading) {
     return <Loading center />
