@@ -2,6 +2,7 @@ import Drink from '../models/Drinks.js'
 import { StatusCodes } from 'http-status-codes'
 import { BadRequestError, NotFoundError } from '../errors/index.js'
 import checkPermissions from '../utils/checkPermission.js'
+import mongoose from 'mongoose'
 
 // @desc create a drink
 // @route POST /api/v1/drinks
@@ -115,5 +116,30 @@ export async function updateDrink(req, res) {
 // @route GET /api/v1/drinks/stats
 // @access private
 export async function showInfo(req, res) {
-  res.send('show info')
+  // mongoDB aggregation pipeline
+  // https://www.mongodb.com/basics/aggregation-pipeline
+  // series of steps to get data from mongo
+  let monthlyDrinks = await Drink.aggregate([
+    // getting userId from authUser middleware
+    // get all drinks by certain user
+    { $match: { createdBy: mongoose.Types.ObjectId(req.user.userId) } },
+    // group the matched drinks by year and month
+    {
+      $group: {
+        _id: { year: { $year: '$createdAt' }, month: { $month: '$createdAt' } },
+        count: { $sum: 1 }
+      }
+    },
+    // originally results where all mixed together. $sort will sort them in our case latest first
+    // _id.year, _id.month coming from group id obj
+    {
+      $sort: { '_id.year': -1, '_id.month': -1 }
+    },
+    // limit to last six months
+    {
+      $limit: 6
+    }
+  ])
+
+  res.status(StatusCodes.OK).json({ monthlyDrinks })
 }
