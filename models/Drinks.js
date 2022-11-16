@@ -6,7 +6,7 @@ const DrinksSchema = new Schema(
     drinkName: {
       type: String,
       required: [true, 'please provide a drink name'],
-      maxLength: 15
+      maxLength: 25
     },
     drinkType: {
       type: String,
