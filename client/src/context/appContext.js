@@ -33,7 +33,9 @@ export const initialState = {
   thoughts: '',
   drinkRating: 1,
 
-  // sort
+  // search and sort
+  search: '',
+  sort: 'latest',
   sortOptions: ['latest', 'oldest', 'a-z', 'z-a']
 }
 
@@ -304,6 +306,10 @@ export function AppProvider({ children }) {
     clearAlert()
   }
 
+  function clearFilters() {
+    console.log('clear filters')
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -320,7 +326,8 @@ export function AppProvider({ children }) {
         setEditDrink,
         deleteDrink,
         editDrink,
-        showInfo
+        showInfo,
+        clearFilters
       }}
     >
       {children}

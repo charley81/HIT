@@ -40,7 +40,6 @@ const Group = styled.div`
     &::placeholder {
       color: var(--colorGreyMid);
       font-size: 1.1rem;
-      text-transform: capitalize;
     }
 
     &:focus {

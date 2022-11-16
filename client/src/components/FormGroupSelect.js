@@ -8,7 +8,7 @@ export default function FormGroupSelect({
   list
 }) {
   return (
-    <div>
+    <Section>
       <label htmlFor={name}>{labelText || name}</label>
       <select name={name} value={value} onChange={handleChange}>
         {list.map((itemValue, index) => {
@@ -19,7 +19,7 @@ export default function FormGroupSelect({
           )
         })}
       </select>
-    </div>
+    </Section>
   )
 }
 
