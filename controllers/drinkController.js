@@ -1,6 +1,7 @@
 import Drink from '../models/Drinks.js'
 import { StatusCodes } from 'http-status-codes'
 import { BadRequestError, NotFoundError } from '../errors/index.js'
+import checkPermissions from '../utils/checkPermission.js'
 
 // @desc create a drink
 // @route POST /api/v1/drinks
@@ -36,7 +37,19 @@ export async function createDrink(req, res) {
 // @route DELETE /api/v1/drinks/:id
 // @access private
 export async function deleteDrink(req, res) {
-  res.send('delete drink')
+  const { id: drinkId } = req.params
+
+  const drink = await Drink.findOne({ _id: drinkId })
+
+  if (!drink) {
+    throw new NotFoundError(`no drink with ID: ${drinkId}`)
+  }
+
+  checkPermissions(req.user, drink.createdBy)
+
+  await drink.remove()
+
+  res.status(StatusCodes.OK).json({ msg: 'drink removed' })
 }
 
 // @desc get all drinks
@@ -54,7 +67,48 @@ export async function getAllDrinks(req, res) {
 // @route PATCH /api/v1/drinks/:id
 // @access private
 export async function updateDrink(req, res) {
-  res.send('update drink')
+  const { id: drinkId } = req.params
+
+  const {
+    drinkLocation,
+    drinkName,
+    drinkType,
+    breweryName,
+    thoughts,
+    drinkRating
+  } = req.body
+
+  if (
+    !drinkLocation ||
+    !drinkName ||
+    !drinkType ||
+    !breweryName ||
+    !thoughts ||
+    !drinkRating
+  ) {
+    throw new BadRequestError('please provide all values')
+  }
+
+  const drink = await Drink.findOne({ _id: drinkId })
+
+  if (!drink) {
+    throw new NotFoundError(`No drink with id: ${drinkId}`)
+  }
+
+  // check to make sure user is authorized before updating
+  checkPermissions(req.user, drink.createdBy)
+
+  const updateDrink = await Drink.findByIdAndUpdate(
+    { _id: drinkId },
+    req.body,
+    {
+      new: true,
+      // validator check if db is expecting a certain value and you provide something different.. i.e [started, pending, ended] and you provide something different
+      runValidators: true
+    }
+  )
+
+  res.status(StatusCodes.OK).json({ updateDrink })
 }
 
 // @desc show user drink stats
