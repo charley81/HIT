@@ -161,7 +161,7 @@ export default function reducer(state, action) {
       return {
         ...state,
         isEditing: true,
-        editJobId: _id,
+        editDrinkId: _id,
         drinkLocation,
         drinkName,
         drinkType,
@@ -174,6 +174,30 @@ export default function reducer(state, action) {
       return {
         ...state,
         isLoading: true
+      }
+    }
+    case 'edit_drink_begin': {
+      return {
+        ...state,
+        isLoading: true
+      }
+    }
+    case 'edit_drink_success': {
+      return {
+        ...state,
+        isLoading: false,
+        showAlert: true,
+        alertType: 'success',
+        alertText: 'drink updated'
+      }
+    }
+    case 'edit_drink_error': {
+      return {
+        ...state,
+        isLoading: false,
+        showAlert: true,
+        alertType: 'danger',
+        alertText: action.payload.msg
       }
     }
     default: {

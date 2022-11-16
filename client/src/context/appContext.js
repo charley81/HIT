@@ -240,8 +240,37 @@ export function AppProvider({ children }) {
   }
 
   // edit drink
-  function editDrink() {
-    console.log('editing drink')
+  async function editDrink(drinkId) {
+    dispatch({ type: 'edit_drink_begin' })
+
+    try {
+      const {
+        drinkLocation,
+        drinkName,
+        drinkRating,
+        drinkType,
+        breweryName,
+        thoughts,
+        editDrinkId
+      } = state
+      await authFetch.patch(`/drinks/${editDrinkId}`, {
+        drinkLocation,
+        drinkName,
+        drinkRating,
+        drinkType,
+        breweryName,
+        thoughts
+      })
+      dispatch({ type: 'edit_drink_success' })
+      dispatch({ type: 'clear_values' })
+    } catch (error) {
+      if (error.response.status === 401) return
+      dispatch({
+        type: 'edit_drink_error',
+        payload: { msg: error.response.data.msg }
+      })
+    }
+    clearAlert()
   }
 
   // delete drink
