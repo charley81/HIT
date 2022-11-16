@@ -5,7 +5,7 @@ import Drink from './Drink'
 import styled from 'styled-components'
 
 export default function DrinksContainer() {
-  const { getDrinks, drinks, isLoading, page, totalDrinks } = useAppContext()
+  const { getDrinks, drinks, isLoading, totalDrinks } = useAppContext()
 
   useEffect(() => {
     getDrinks()

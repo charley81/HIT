@@ -7,7 +7,7 @@ export default function Info() {
 
   useEffect(() => {
     showInfo()
-  }, [showInfo])
+  }, [])
 
   if (isLoading) {
     return <Loading center />

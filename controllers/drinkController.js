@@ -58,7 +58,37 @@ export async function deleteDrink(req, res) {
 // @route GET /api/v1/drinks
 // @access private
 export async function getAllDrinks(req, res) {
-  const drinks = await Drink.find({ createdBy: req.user.userId })
+  const { search, sort } = req.query
+  // const drinks = await Drink.find({ createdBy: req.user.userId })
+
+  // search/sort properties will be conditionally added to this obj
+  const queryObject = {
+    createdBy: req.user.userId
+  }
+
+  // pass in values to the regex, search term and option i for case sensitive
+  if (search) {
+    queryObject.drinkType = { $regex: search, $options: 'i' }
+  }
+
+  // not using await here so that we can chain some more stuff to the queryObject. if you go with await you get the result right away. if you don't use await you get back the query so you can chain
+  let result = Drink.find(queryObject)
+
+  // sort options chained to queryObj
+  if (sort === 'latest') {
+    result = result.sort('-createdAt')
+  }
+  if (sort === 'oldest') {
+    result = result.sort('createdAt')
+  }
+  if (sort === 'a-z') {
+    result = result.sort('drinkName')
+  }
+  if (sort === 'z-a') {
+    result = result.sort('-drinkName')
+  }
+
+  const drinks = await result
 
   res
     .status(StatusCodes.OK)

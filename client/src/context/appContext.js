@@ -34,7 +34,7 @@ export const initialState = {
   drinkRating: 1,
 
   // sort
-  sortOptions: ['a-z', 'z-a', 'high-to-low', 'low-to-high']
+  sortOptions: ['latest', 'oldest', 'a-z', 'z-a']
 }
 
 // setup context => returns a provider and a consumer
