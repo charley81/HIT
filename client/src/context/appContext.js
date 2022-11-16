@@ -228,7 +228,6 @@ export function AppProvider({ children }) {
       console.log(error.response)
       // logoutUser()
     }
-
     clearAlert()
   }
 
@@ -246,8 +245,16 @@ export function AppProvider({ children }) {
   }
 
   // delete drink
-  function deleteDrink(id) {
-    console.log(`delete drink ${id}`)
+  async function deleteDrink(drinkId) {
+    dispatch({ type: 'delete_drink_begin' })
+
+    try {
+      await authFetch.delete(`/drinks/${drinkId}`)
+      // make request to get latest drinks after delete
+      getDrinks()
+    } catch (error) {
+      // logoutUser()
+    }
   }
 
   return (

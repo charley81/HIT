@@ -170,6 +170,12 @@ export default function reducer(state, action) {
         drinkRating
       }
     }
+    case 'delete_drink_begin': {
+      return {
+        ...state,
+        isLoading: true
+      }
+    }
     default: {
       throw new Error(`no such action: ${action.type}`)
     }
