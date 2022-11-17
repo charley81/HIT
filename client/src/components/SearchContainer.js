@@ -26,13 +26,13 @@ export default function SearchContainer() {
           type="text"
           name="search"
           value={search}
-          handleChange={handleSearch}
+          onChange={handleSearch}
           placeholder="search beer types i.e.. stout, ipa"
         />
         <FormGroupSelect
           name="sort"
           value={sort}
-          handleChange={handleSearch}
+          onChange={handleSearch}
           list={sortOptions}
         />
 

@@ -4,13 +4,13 @@ export default function FormGroupSelect({
   labelText,
   name,
   value,
-  handleChange,
+  onChange,
   list
 }) {
   return (
     <Section>
       <label htmlFor={name}>{labelText || name}</label>
-      <select name={name} value={value} onChange={handleChange}>
+      <select name={name} value={value} onChange={onChange}>
         {list.map((itemValue, index) => {
           return (
             <option key={index} value={itemValue}>

@@ -233,7 +233,7 @@ export function AppProvider({ children }) {
       })
     } catch (error) {
       console.log(error.response)
-      // logoutUser()
+      logoutUser()
     }
     clearAlert()
   }
@@ -289,7 +289,7 @@ export function AppProvider({ children }) {
       // make request to get latest drinks after delete
       getDrinks()
     } catch (error) {
-      // logoutUser()
+      logoutUser()
     }
   }
 

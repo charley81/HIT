@@ -29,25 +29,25 @@ export default function Profile() {
           type="text"
           name="firstName"
           value={firstName}
-          handleChange={e => setFirstName(e.target.value)}
+          onChange={e => setFirstName(e.target.value)}
         />
         <FormGroup
           type="text"
           name="lastName"
           value={lastName}
-          handleChange={e => setLastName(e.target.value)}
+          onChange={e => setLastName(e.target.value)}
         />
         <FormGroup
           type="email"
           name="email"
           value={email}
-          handleChange={e => setEmail(e.target.value)}
+          onChange={e => setEmail(e.target.value)}
         />
         <FormGroup
           type="text"
           name="location"
           value={location}
-          handleChange={e => setLocation(e.target.value)}
+          onChange={e => setLocation(e.target.value)}
         />
         <button type="submit" className="btn btn-primary" disabled={isLoading}>
           {isLoading ? 'updating...' : 'Update'}
