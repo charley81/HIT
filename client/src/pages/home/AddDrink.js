@@ -58,7 +58,7 @@ export default function AddDrink() {
           type="text"
           name="drinkName"
           value={drinkName}
-          onChange={handleDrinkInput}
+          handleChange={handleDrinkInput}
           text="Name"
           placeholder="enter drink name"
         />
@@ -66,7 +66,7 @@ export default function AddDrink() {
           type="text"
           name="drinkType"
           value={drinkType}
-          onChange={handleDrinkInput}
+          handleChange={handleDrinkInput}
           text="Type"
           placeholder="enter drink type... Pilsner"
         />
@@ -74,7 +74,7 @@ export default function AddDrink() {
           type="text"
           name="drinkLocation"
           value={drinkLocation}
-          onChange={handleDrinkInput}
+          handleChange={handleDrinkInput}
           text="Location"
           placeholder="enter drink location... Charlotte, NC"
         />
@@ -82,7 +82,7 @@ export default function AddDrink() {
           type="text"
           name="breweryName"
           value={breweryName}
-          onChange={handleDrinkInput}
+          handleChange={handleDrinkInput}
           text="Brewery Name"
           placeholder="enter name of brewery"
         />
@@ -90,7 +90,7 @@ export default function AddDrink() {
           type="number"
           name="drinkRating"
           value={drinkRating}
-          onChange={handleDrinkInput}
+          handleChange={handleDrinkInput}
           text="Rating"
           placeholder="enter rating out of 10"
         />
@@ -98,7 +98,7 @@ export default function AddDrink() {
         <textarea
           name="thoughts"
           value={thoughts}
-          onChange={handleDrinkInput}
+          handleChange={handleDrinkInput}
           cols="30"
           rows="10"
         ></textarea>

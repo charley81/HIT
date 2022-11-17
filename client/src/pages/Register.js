@@ -71,7 +71,7 @@ export default function Register() {
             type="text"
             name="firstName"
             value={values.firstName}
-            onChange={handleChange}
+            handleChange={handleChange}
             text="name"
             placeholder="enter first name"
           />
@@ -82,7 +82,7 @@ export default function Register() {
           type="email"
           name="email"
           value={values.email}
-          onChange={handleChange}
+          handleChange={handleChange}
           text="email"
           placeholder="enter email"
         />
@@ -91,7 +91,7 @@ export default function Register() {
           type="password"
           name="password"
           value={values.password}
-          onChange={handleChange}
+          handleChange={handleChange}
           text="password"
           placeholder="enter password"
         />
