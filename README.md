@@ -59,3 +59,11 @@
   > This package validates strings. I used it to validate emails because it's better tested and gives you more options than out of the box mongoose validation. You can use this package to validate just about anything
 - [http status codes](https://www.npmjs.com/package/http-status-codes)
   > This package provides constants for status codes. It provides consistency, less bugs, and is easier to read/manage. It also gives you a description of the status code when hovering over it. As well it gives you suggestions with descriptions when choosing a status code
+- [helmet](https://www.npmjs.com/package/helmet)
+  > Helmet helps you secure your Express apps by setting various HTTP headers.
+- [xss-clean]()
+  > Node.js Connect middleware to sanitize user input coming from POST body, GET queries, and url params. help prevent cross-site scripting attacks
+- [express-mongo-sanitize](https://www.npmjs.com/package/express-mongo-sanitize)
+  > Express 4.x middleware which sanitizes user-supplied data to prevent MongoDB Operator Injection
+- [express-rate-limit](https://www.npmjs.com/package/express-rate-limit)
+  > Basic rate-limiting middleware for Express. Use to limit repeated requests to public APIs and/or endpoints such as password reset.
