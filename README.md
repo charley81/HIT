@@ -1,44 +1,26 @@
 # TDTR => To Drunk To Remember
 
-### I designed and developed this product and conducted the following:
+### [Live Site](https://tdtr.onrender.com/intro)
 
-- Business/client needs ⇒ my personal / class project needs
+For this project I wanted combine my design/user experience knowledge with what I’ve learned in full stack web development using the MERN stack.
 
-1. class project needs
+Before developing anything I started with the user experience of thinking about the class projects needs as well as the user needs. Since this was a two week sprint, a MVP (minimum viable product) in this case I went with my personal needs, which ultimately is who I solved this problem for.
 
-- A working full-stack application, built by you, using the MERN stack: Node.js, MongoDB/Mongoose, Express and React.
-- At least two models with full CRUD.
-- Follow proper MVC backend structure (models, controllers, routes in separate folders)
-- As many pages and components as you need
-- Include sign up/login (authentication) functionality, with encrypted passwords & an authorization flow
-- Use of axios and local storage for tokens
-- Use of a CSS framework for styling (Bootstrap, MaterialUI, Skeleton, Tailwind, etc.)
-- At least one GitHub commit per day (at least 15)
-- Be deployed online and accessible to the public
-- A README.md file (should include a link to your hosted working website)
+### [Class Project Needs](https://www.notion.so/Class-Project-Needs-a851f568f57242d39dc8c9813c0bb5f1)
 
-#### Stretch goals:
+### [User Needs](https://www.notion.so/Personal-Needs-81c8584e66fa4950a53b2c702fe3cb19)
 
-- Manage at least some part of state with the useReducer and useContext hooks (together) or ReduxLinks to an external site. (npm install @reduxjs/toolkit react-redux)
-- Pull from a third party API - either client side with AJAX or server-side with an NPM
+After reviewing the client and user needs I researched and designed the information architecture for this application
 
-2. Personal needs
+### [Information Architecture](https://www.figma.com/file/nNkKdpeDNBzyvU9ObTfoBP/Information-Architecture)
 
-- I consider myself a beer connoisseur. I’m not an alcoholic, nor do I drink everyday but I do enjoy having a few cold brews several times a week. I like to switch things up, try different beers and a lot of time will build my own six pack of different beer to try. The problem I alway run into is remembering which beers I’ve already tried and my thoughts about it. I’ve always wanted to build a beer log/tracker to solve this problem for me.
+### [User Flow](https://www.figma.com/file/paclPNy2tqpoKXQ3CcjTsh/User-Flow?node-id=0%3A1)
 
-- A way to keep track of the beers that I’ve drank, log their info like name, type, location, description, and my personal ranking of the beer so that when shopping at a later date of while having a conversation about different beers I have a record of what I drank, the info about the beer and my thoughts about it
+Next came the design process of creating high fidelity designs of what I wanted the application to look like. My thought process behind the design was minimalism, simplicity, and ease of use
 
-## Business Needs / Problem Statement\*\*
+### [Designs](https://www.figma.com/file/JrtbLcHt61qyx76Ztqwcxx/Designs?node-id=4%3A11)
 
-- User needs a ways to keep track of what beers they have drank, log info about the particular beer and most importantly their thoughts about it
-
-## [Information Architecture](https://www.figma.com/file/nNkKdpeDNBzyvU9ObTfoBP/Information-Architecture)
-
-## [User Flow](https://www.figma.com/file/paclPNy2tqpoKXQ3CcjTsh/User-Flow?node-id=0%3A1)
-
-## [Designs](https://www.figma.com/file/JrtbLcHt61qyx76Ztqwcxx/Designs?node-id=4%3A11)
-
-## Uses:
+## The main tech this app uses:
 
 - React
 - React Hooks (useState, useEffect, useReducer, createContext, useContext)
@@ -51,7 +33,7 @@
 - React RouterV6
 - recharts
 
-## Extras
+## Some extra packages I used:
 
 - [express-async-errors](https://www.npmjs.com/package/express-async-errors)
   > No need for try/catch in async controller functions, nor need to call next and pass in error for error to be sent to error handler middleware... All this is handled behind the scenes with the express-async-errors package
@@ -67,3 +49,33 @@
   > Express 4.x middleware which sanitizes user-supplied data to prevent MongoDB Operator Injection
 - [express-rate-limit](https://www.npmjs.com/package/express-rate-limit)
   > Basic rate-limiting middleware for Express. Use to limit repeated requests to public APIs and/or endpoints such as password reset.
+
+## what I learnt
+
+- How to setup proper error handling, not only on backend but conducting checks on the front end to hopefully catch any user error before getting to the server
+- How to research to find solutions to problems using documentation, watching videos, and finding other Github repositories for reference
+- How to use a wide variety of tech frontend and backend together
+- How to deploy a full stack application on render
+- How to complete a full stack application solving client and user needs conducting the human centered design process, development, and CI/CD (continues integration / continues deployment)
+
+## what problems you solved
+
+- User authentication was the toughest challenge for me
+- Setting up error handling on the server and breaking it down by bad request, not found, and unauthenticated to send back the correct error
+- Creating complex mongoDB queries for search and sort
+- Implementing pagination
+- Really trying to understand everything in the code even if it’s something that I found through research
+
+## what I liked about the project
+
+- I really enjoyed getting more comfortable working with a server and database
+- Implementing authentication from scratch using node, express, and mongoDB
+- Of course the design and bringing the design to life by writing code
+- Getting a better understanding of server errors and implanting proper error handling
+- Creating a custom loader with just html and css
+- creating complex queries in mongoDB with mongoose
+- implementing the pagination feature from scratch
+
+## Next steps
+
+- Turn this into more of a social media platform where you can see and search other users collection as well as add friends, be friended, and send messages
