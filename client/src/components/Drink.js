@@ -19,10 +19,13 @@ export default function Drink({
 
   return (
     <Section>
+      {/* header */}
       <header>
         <p>{drinkName}</p>
         <p>{drinkRating}/10</p>
       </header>
+
+      {/* brewery and location */}
       <div className="sub-header">
         <p className="brewery">{breweryName}</p>
         <div className="location">
@@ -30,13 +33,19 @@ export default function Drink({
           <p>{drinkLocation}</p>
         </div>
       </div>
+
+      {/* thoughts */}
       <main>
         <p>{thoughts}</p>
       </main>
+
+      {/* type and date */}
       <div className="info">
         <p>{drinkType}</p>
         <p>{date}</p>
       </div>
+
+      {/* buttons */}
       <footer>
         <div className="buttons">
           <Link
@@ -63,6 +72,7 @@ const Section = styled.div`
   border: 1px solid var(--colorGreyLight);
   padding: 1rem;
   border-radius: var(--borderRadius);
+  position: relative;
 
   header {
     display: flex;

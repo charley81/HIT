@@ -34,9 +34,15 @@ export default function DrinksContainer() {
 
   return (
     <Section>
-      <h4>
-        {totalDrinks} drink{drinks.length > 1 && 's'}
-      </h4>
+      <header>
+        <h4>
+          {totalDrinks} drink{drinks.length > 1 && 's'}
+        </h4>
+        <h4>
+          {page} of {numOfPages}
+        </h4>
+      </header>
+
       <div className="drinks">
         {drinks.map(drink => {
           return <Drink key={drink._id} {...drink} />
@@ -52,8 +58,14 @@ const Section = styled.section`
   margin: auto;
   padding: 1rem;
 
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
+
   h4 {
     margin-bottom: 1rem;
+    color: var(--colorGreyMid);
   }
 
   .drinks {

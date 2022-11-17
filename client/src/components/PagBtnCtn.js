@@ -29,7 +29,7 @@ export default function PagBtnCtn() {
 
   return (
     <Section>
-      <AiFillCaretLeft onClick={prevPage} />
+      <AiFillCaretLeft onClick={prevPage} className="icon" />
       <div className="buttons-container">
         {pages.map(pageNumber => {
           return (
@@ -45,13 +45,30 @@ export default function PagBtnCtn() {
           )
         })}
       </div>
-      <AiFillCaretRight onClick={nextPage} />
+      <AiFillCaretRight onClick={nextPage} className="icon" />
     </Section>
   )
 }
 
 const Section = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin: 2rem 0;
+
+  .icon {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
   button {
-    margin: 1rem;
+    margin: 0 0.25rem;
+    background: none;
+    padding: 0.25rem;
+    border-radius: var(--borderRadius);
+    cursor: pointer;
+  }
+
+  .active {
+    background: var(--colorGreyLight);
   }
 `

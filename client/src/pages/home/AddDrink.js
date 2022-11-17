@@ -115,7 +115,7 @@ export default function AddDrink() {
           clearValues()
         }}
       >
-        <p>clear values</p>
+        clear values
       </button>
     </Section>
   )
@@ -156,21 +156,13 @@ const Section = styled.section`
   }
 
   .clear {
-    background-color: inherit;
     cursor: pointer;
-    background: var(--colorGreyDark);
-    padding: 0.5rem;
-    border: 1px solid transparent;
-    border-radius: var(--borderRadius);
     font-family: var(--fontFamily);
     transition: var(--transition);
-    color: var(--colorLight);
-
-    &:hover {
-      background-color: transparent;
-      border: 1px solid var(--colorGreyDark);
-      color: var(--colorGreyDark);
-    }
+    color: var(--colorDark);
+    text-decoration: underline;
+    background-color: inherit;
+    border: none;
   }
 
   @media (min-width: 1024px) {
