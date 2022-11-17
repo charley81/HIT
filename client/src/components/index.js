@@ -8,6 +8,7 @@ import DrinksContainer from './DrinksContainer'
 import SearchContainer from './SearchContainer'
 import Loading from './Loading'
 import BarChart from './BarChart'
+import PagBtnCtn from './PagBtnCtn'
 
 export {
   Header,
@@ -19,5 +20,6 @@ export {
   SearchContainer,
   Loading,
   BarChart,
-  FormGroupSelect
+  FormGroupSelect,
+  PagBtnCtn
 }

@@ -216,8 +216,8 @@ export function AppProvider({ children }) {
   // get all drinks
   async function getDrinks() {
     // TODO: add page
-    const { search, sort } = state
-    let url = `/drinks?sort=${sort}`
+    const { search, sort, page } = state
+    let url = `/drinks?page=${page}&sort=${sort}`
     if (search) {
       url = url + `&search=${search}`
     }
@@ -311,8 +311,17 @@ export function AppProvider({ children }) {
     clearAlert()
   }
 
+  // clear filters
   function clearFilters() {
     dispatch({ type: 'clear_filters' })
+  }
+
+  // change page
+  function changePage(page) {
+    dispatch({
+      type: 'change_page',
+      payload: { page }
+    })
   }
 
   return (
@@ -332,7 +341,8 @@ export function AppProvider({ children }) {
         deleteDrink,
         editDrink,
         showInfo,
-        clearFilters
+        clearFilters,
+        changePage
       }}
     >
       {children}

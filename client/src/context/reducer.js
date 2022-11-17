@@ -94,6 +94,7 @@ export default function reducer(state, action) {
     case 'handle_change': {
       return {
         ...state,
+        page: 1,
         [action.payload.name]: action.payload.value
       }
     }
@@ -144,7 +145,8 @@ export default function reducer(state, action) {
         ...state,
         isLoading: false,
         drinks: action.payload.drinks,
-        totalDrinks: action.payload.totalDrinks
+        totalDrinks: action.payload.totalDrinks,
+        numOfPages: action.payload.numOfPages
       }
     }
     case 'set_edit_drink': {
@@ -219,6 +221,12 @@ export default function reducer(state, action) {
         ...state,
         search: '',
         sort: 'latest'
+      }
+    }
+    case 'change_page': {
+      return {
+        ...state,
+        page: action.payload.page
       }
     }
     default: {

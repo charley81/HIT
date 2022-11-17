@@ -99,9 +99,9 @@ export async function getAllDrinks(req, res) {
   // get the total number of docs for a certain user
   const totalDrinks = await Drink.countDocuments(queryObject)
   // take the total docs and divide by limit to get num of pages and round up so we don't have a half page
-  const totalPages = Math.ceil(totalDrinks / limit)
+  const numOfPages = Math.ceil(totalDrinks / limit)
 
-  res.status(StatusCodes.OK).json({ drinks, totalDrinks, totalPages })
+  res.status(StatusCodes.OK).json({ drinks, totalDrinks, numOfPages })
 }
 
 // @desc update a drink

@@ -1,16 +1,24 @@
 import { useAppContext } from '../context/appContext'
 import { useEffect } from 'react'
-import Loading from './Loading'
+import { Loading, PagBtnCtn } from '.'
 import Drink from './Drink'
 import styled from 'styled-components'
 
 export default function DrinksContainer() {
-  const { getDrinks, drinks, isLoading, totalDrinks, search, sort } =
-    useAppContext()
+  const {
+    getDrinks,
+    drinks,
+    isLoading,
+    totalDrinks,
+    search,
+    sort,
+    numOfPages,
+    page
+  } = useAppContext()
 
   useEffect(() => {
     getDrinks()
-  }, [search, sort])
+  }, [search, sort, page])
 
   if (isLoading) {
     return <Loading center />
@@ -34,7 +42,7 @@ export default function DrinksContainer() {
           return <Drink key={drink._id} {...drink} />
         })}
       </div>
-      {/* {pagination buttons} */}
+      {numOfPages > 1 && <PagBtnCtn />}
     </Section>
   )
 }
