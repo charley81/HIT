@@ -1,3 +1,4 @@
+import styled from 'styled-components'
 import { useEffect } from 'react'
 import { useAppContext } from '../../context/appContext'
 import { Loading, Header, BarChart } from '../../components'
@@ -13,13 +14,19 @@ export default function Info() {
     return <Loading center />
   }
   return (
-    <div>
+    <Section>
       <Header text="monthly" />
       {monthlyDrinks?.length ? (
         <BarChart data={monthlyDrinks} />
       ) : (
         <h3>No drinks to track</h3>
       )}
-    </div>
+    </Section>
   )
 }
+
+const Section = styled.section`
+  max-width: var(--maxWidthTotal);
+  margin: auto;
+  padding: 1rem;
+`

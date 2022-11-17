@@ -50,4 +50,20 @@ export default function SearchContainer() {
   )
 }
 
-const Section = styled.section``
+const Section = styled.section`
+  padding: 1rem;
+  max-width: var(--maxWidthTablet);
+  margin: auto;
+
+  form {
+    margin: 2rem 0;
+  }
+
+  button {
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: var(--formMaxDesktop);
+  }
+`

@@ -21,7 +21,7 @@ export default function BarCharts({ data }) {
         <XAxis dataKey="date" />
         <YAxis allowDecimals={false} />
         <Tooltip />
-        <Bar dataKey="count" fill="#FFB721" barSize={50} />
+        <Bar dataKey="count" fill="#FFB721" barSize={25} />
       </BarChart>
     </ResponsiveContainer>
   )

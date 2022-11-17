@@ -1,5 +1,4 @@
 import moment from 'moment'
-import { FaRegCalendarAlt } from 'react-icons/fa'
 import { GrLocation } from 'react-icons/gr'
 import { Link } from 'react-router-dom'
 import { useAppContext } from '../context/appContext'
@@ -25,7 +24,7 @@ export default function Drink({
         <p>{drinkRating}/10</p>
       </header>
       <div className="sub-header">
-        <p>{breweryName}</p>
+        <p className="brewery">{breweryName}</p>
         <div className="location">
           <GrLocation />
           <p>{drinkLocation}</p>
@@ -34,8 +33,9 @@ export default function Drink({
       <main>
         <p>{thoughts}</p>
       </main>
-      <div className="type">
-        <p>Type: {drinkType}</p>
+      <div className="info">
+        <p>{drinkType}</p>
+        <p>{date}</p>
       </div>
       <footer>
         <div className="buttons">
@@ -54,7 +54,6 @@ export default function Drink({
             Delete
           </button>
         </div>
-        <p>{date}</p>
       </footer>
     </Section>
   )
@@ -70,5 +69,56 @@ const Section = styled.div`
     justify-content: space-between;
     font-weight: 700;
     font-size: 1.1rem;
+
+    p {
+      text-transform: capitalize;
+    }
+  }
+
+  .sub-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+
+    .brewery {
+      color: var(--colorPrimary);
+    }
+
+    .location {
+      display: flex;
+      align-items: center;
+      color: var(--colorGreyMid);
+
+      p {
+        margin-left: 0.25rem;
+      }
+    }
+  }
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+    text-transform: capitalize;
+    margin: 1rem 0;
+  }
+
+  .btn-small {
+    font-size: 1rem;
+    background: inherit;
+    padding: 0.25rem;
+    border-radius: var(--borderRadius);
+    font-family: var(--fontFamily);
+    cursor: pointer;
+  }
+
+  .edit-btn {
+    border: 1px solid var(--colorDark);
+    color: var(--colorDark);
+    margin-right: 0.5rem;
+  }
+
+  .delete-btn {
+    background-color: var(--colorDark);
+    color: var(--colorLight);
   }
 `

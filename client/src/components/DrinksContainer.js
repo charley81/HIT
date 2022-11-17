@@ -34,9 +34,9 @@ export default function DrinksContainer() {
 
   return (
     <Section>
-      <h5>
+      <h4>
         {totalDrinks} drink{drinks.length > 1 && 's'}
-      </h5>
+      </h4>
       <div className="drinks">
         {drinks.map(drink => {
           return <Drink key={drink._id} {...drink} />
@@ -48,9 +48,17 @@ export default function DrinksContainer() {
 }
 
 const Section = styled.section`
+  max-width: var(--maxWidthTotal);
+  margin: auto;
+  padding: 1rem;
+
+  h4 {
+    margin-bottom: 1rem;
+  }
+
   .drinks {
-    padding: 1rem;
     display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(343px, 1fr));
     gap: 1rem;
   }
 `
