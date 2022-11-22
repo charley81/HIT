@@ -8,7 +8,6 @@ dotenv.config()
 async function start() {
   try {
     await connectDB(process.env.MONGO_URL)
-    await Drink.deleteMany()
 
     const jsonProducts = JSON.parse(
       await readFile(new URL('./mock-data.json', import.meta.url))

@@ -178,6 +178,15 @@ export default function reducer(state, action) {
         isLoading: true
       }
     }
+    case 'delete_drink_error': {
+      return {
+        ...state,
+        isLoading: false,
+        showAlert: true,
+        alertType: 'danger',
+        alertText: action.payload.msg
+      }
+    }
     case 'edit_drink_begin': {
       return {
         ...state,

@@ -1,6 +1,8 @@
 import express from 'express'
 const router = express.Router()
 import authUser from '../middleware/authUser.js'
+import testUser from '../middleware/testUser.js'
+
 import {
   registerUser,
   loginUser,
@@ -16,6 +18,6 @@ const limiter = rateLimit({
 
 router.route('/register').post(limiter, registerUser)
 router.route('/login').post(limiter, loginUser)
-router.route('/updateUser').patch(authUser, updateUser)
+router.route('/updateUser').patch(authUser, testUser, updateUser)
 
 export default router

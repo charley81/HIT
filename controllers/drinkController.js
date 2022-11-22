@@ -58,6 +58,7 @@ export async function deleteDrink(req, res) {
 // @route GET /api/v1/drinks
 // @access private
 export async function getAllDrinks(req, res) {
+  console.log(req.user)
   const { search, sort } = req.query
   // const drinks = await Drink.find({ createdBy: req.user.userId })
 

@@ -289,8 +289,13 @@ export function AppProvider({ children }) {
       // make request to get latest drinks after delete
       getDrinks()
     } catch (error) {
-      logoutUser()
+      if (error.response.status === 401) return
+      dispatch({
+        type: 'delete_drink_error',
+        payload: { msg: error.response.data.msg }
+      })
     }
+    clearAlert()
   }
 
   // show info

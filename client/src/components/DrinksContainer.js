@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { Loading, PagBtnCtn } from '.'
 import Drink from './Drink'
 import styled from 'styled-components'
+import Alert from './Alert'
 
 export default function DrinksContainer() {
   const {
@@ -13,7 +14,8 @@ export default function DrinksContainer() {
     search,
     sort,
     numOfPages,
-    page
+    page,
+    showAlert
   } = useAppContext()
 
   useEffect(() => {
@@ -34,6 +36,7 @@ export default function DrinksContainer() {
 
   return (
     <Section>
+      {showAlert && <Alert />}
       <header>
         <h4>
           {totalDrinks} drink{drinks.length > 1 && 's'}

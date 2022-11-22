@@ -100,6 +100,24 @@ export default function Register() {
         <button type="submit" className="btn btn-primary" disabled={isLoading}>
           Submit
         </button>
+        {/* test user */}
+        <button
+          type="submit"
+          className="btn btn-primary test"
+          disabled={isLoading}
+          onClick={() => {
+            setupUser({
+              currentUser: {
+                email: 'testUser@test.com',
+                password: 'aaa111'
+              },
+              endPoint: 'login',
+              alertText: 'Login successful redirecting'
+            })
+          }}
+        >
+          {isLoading ? 'loading...' : 'Test User'}
+        </button>
 
         {/* switch between register and login */}
         <p>
@@ -109,6 +127,11 @@ export default function Register() {
           </button>
         </p>
       </form>
+      <p>
+        Note: This was a class project and is using a free hosting service. With
+        that being said there may be about a 15 sec wait before you are logged
+        in. Please be patient, as it is worth the wait. Thanks
+      </p>
     </Section>
   )
 }
@@ -124,6 +147,10 @@ const Section = styled.section`
 
   button {
     margin-top: 2rem;
+  }
+
+  .test {
+    margin-top: 1rem;
   }
 
   p {
