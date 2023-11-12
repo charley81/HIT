@@ -1,6 +1,6 @@
 # TDTR => To Drunk To Remember
 
-### [Live Site](https://chrisharley.io/)
+### [Live Site](https://tdtr.onrender.com/intro)
 
 For this project I wanted combine my design/user experience knowledge with what I’ve learned in full stack web development using the MERN stack.
 
