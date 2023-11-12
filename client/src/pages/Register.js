@@ -127,11 +127,6 @@ export default function Register() {
           </button>
         </p>
       </form>
-      <p>
-        Note: This was a class project and is using a free hosting service. With
-        that being said there may be about a 15 sec wait before you are logged
-        in. Please be patient, as it is worth the wait. Thanks
-      </p>
     </Section>
   )
 }
