@@ -12,7 +12,7 @@ export default function Navbar() {
     <Section>
       <div className="nav-center">
         {/* logo */}
-        <h3>TDTR</h3>
+        <h3>HIT</h3>
 
         {/* menu sections */}
         <div className="menu-section">
