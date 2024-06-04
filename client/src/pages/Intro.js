@@ -7,14 +7,15 @@ export default function Intro() {
   return (
     <Section>
       {/* header */}
-      <Header text={'TDTR'} />
+      <Header text={'HIT'} />
 
       <div className="content">
         {/* info sec */}
         <div className="info">
           <p>
-            Too drunk to remember (TDTR) is a platform for you to keep track,
-            log details and rank beverages you’ve had… So next time you know
+            Have I Tried (HIT) is a dynamic platform designed to help you keep
+            track of the drinks you've experienced. Share your thoughts, rate
+            each drink, and build a personalized record of your tasting journey.
           </p>
           <Link to="/register" className="btn btn-primary">
             Login/Register
