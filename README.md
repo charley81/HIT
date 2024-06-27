@@ -1,4 +1,4 @@
-# TDTR => To Drunk To Remember
+# HIT => Have I Tried
 
 ### [Live Site](https://tdtr.onrender.com/intro)
 
